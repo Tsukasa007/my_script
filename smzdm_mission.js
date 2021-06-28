@@ -1,3 +1,9 @@
+/**
+ * SMZDM_COOKIE 什么值得买Cookie
+ * @type {string}
+ */
+
+
 const smzdmCookieKey = "smzdm_cookie";
 const scriptName = "什么值得买";
 let clickGoBuyMaxTimes = 12; // 好价点击去购买的次数
@@ -434,6 +440,8 @@ function WebGetCurrentInfo(smzdmCookie) {
   } else {
     for (let i = 0; i < cookieSMZDMs.length; i++) {
       try {
+        $.index = i+1
+        content.push("========== [Cookie " + $.index + "] Start ========== ")
         let smzdmCookie = cookieSMZDMs[i]
         // 任务完成情况
         let clickGoBuyTimes = 0;
@@ -583,10 +591,11 @@ function WebGetCurrentInfo(smzdmCookie) {
         // magicJS.notify(scriptName, "", "❌执行任务出现，请查阅日志");
         notify.sendNotify( scriptName,`❌执行任务出现，请查阅日志`);
       }
+      content.push("========== [Cookie " + $.index + "]  End  ========== \n\n\n")
     }
   }
   magicJS.done();
-  notify.sendNotify( scriptName,content.join("\n"));
+  notify.sendNotify( scriptName,result.join("\n"));
 })();
 
 // prettier-ignore
