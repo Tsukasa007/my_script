@@ -441,6 +441,7 @@ function WebGetCurrentInfo(smzdmCookie) {
       try {
         $.index = i+1
         content+=("\n========== [Cookie " + $.index + "] Start ========== ")
+        magicJS.log("\n========== [Cookie " + $.index + "] Start ========== ")
         let smzdmCookie = cookieSMZDMs[i]
         // 任务完成情况
         let clickGoBuyTimes = 0;
@@ -589,7 +590,8 @@ function WebGetCurrentInfo(smzdmCookie) {
         // magicJS.notify(scriptName, "", "❌执行任务出现，请查阅日志");
         notify.sendNotify( scriptName,`❌执行任务出现，请查阅日志`);
       }
-      content.push("\n========== [Cookie " + $.index + "]  End  ========== \n\n\n")
+      content+=("\n========== [Cookie " + $.index + "]  End  ========== \n\n\n")
+      magicJS.log("\n========== [Cookie " + $.index + "]  End  ========== \n\n\n")
       result.push(content)
     }
   }
