@@ -440,7 +440,7 @@ function WebGetCurrentInfo(smzdmCookie) {
     for (let i = 0; i < cookieSMZDMs.length; i++) {
       try {
         $.index = i+1
-        content.push("\n========== [Cookie " + $.index + "] Start ========== ")
+        content+=("\n========== [Cookie " + $.index + "] Start ========== ")
         let smzdmCookie = cookieSMZDMs[i]
         // 任务完成情况
         let clickGoBuyTimes = 0;
@@ -582,7 +582,6 @@ function WebGetCurrentInfo(smzdmCookie) {
 
           title = `${scriptName} - ${nickName} V${afterVIPLevel}`;
           // magicJS.notify(title, subTitle, content, { "media-url": avatar });
-          result.push(content)
         }
       } catch (err) {
         // magicJS.logError(`执行任务出现异常：${err}`);
@@ -591,6 +590,7 @@ function WebGetCurrentInfo(smzdmCookie) {
         notify.sendNotify( scriptName,`❌执行任务出现，请查阅日志`);
       }
       content.push("\n========== [Cookie " + $.index + "]  End  ========== \n\n\n")
+      result.push(content)
     }
   }
   magicJS.done();
