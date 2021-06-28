@@ -1,8 +1,7 @@
-/**
- * SMZDM_COOKIE 什么值得买Cookie
- * @type {string}
+/*
+什么值得买自动签到任务
+env -> SMZDM_COOKIE 什么值得买Cookie
  */
-
 
 const smzdmCookieKey = "smzdm_cookie";
 const scriptName = "什么值得买";
