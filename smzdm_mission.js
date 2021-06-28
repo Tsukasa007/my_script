@@ -435,12 +435,12 @@ function WebGetCurrentInfo(smzdmCookie) {
     // magicJS.logWarning("没有读取到什么值得买有效cookie，请访问zhiyou.smzdm.com进行登录");
     // magicJS.notify(scriptName, "", "❓没有获取到Web端Cookie，请先进行登录。");
     notify.sendNotify(scriptName,"没有读取到什么值得买有效cookie，请访问zhiyou.smzdm.com进行登录")
-    content.push("没有读取到什么值得买有效cookie，请访问zhiyou.smzdm.com进行登录")
+    content+=("\n没有读取到什么值得买有效cookie，请访问zhiyou.smzdm.com进行登录")
   } else {
     for (let i = 0; i < cookieSMZDMs.length; i++) {
       try {
         $.index = i+1
-        content.push("========== [Cookie " + $.index + "] Start ========== ")
+        content.push("\n========== [Cookie " + $.index + "] Start ========== ")
         let smzdmCookie = cookieSMZDMs[i]
         // 任务完成情况
         let clickGoBuyTimes = 0;
@@ -590,7 +590,7 @@ function WebGetCurrentInfo(smzdmCookie) {
         // magicJS.notify(scriptName, "", "❌执行任务出现，请查阅日志");
         notify.sendNotify( scriptName,`❌执行任务出现，请查阅日志`);
       }
-      content.push("========== [Cookie " + $.index + "]  End  ========== \n\n\n")
+      content.push("\n========== [Cookie " + $.index + "]  End  ========== \n\n\n")
     }
   }
   magicJS.done();
