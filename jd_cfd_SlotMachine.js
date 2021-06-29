@@ -1621,7 +1621,7 @@ cron "10 7 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd
   }, t
 });
 
-const $ = new Env("京喜财富岛");
+const $ = new Env("京喜财富岛老虎机");
 
 console.log('\n====================Hello World====================\n')
 
