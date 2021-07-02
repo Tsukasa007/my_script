@@ -1671,7 +1671,7 @@ $.appId = 10009;
         await main();
       }
     }
-    if (i+1 === (process.env.JD_CFD_LHJ ? process.env.JD_CFD_LHJ : 1)){
+    if (i+1 == (process.env.JD_CFD_LHJ ? process.env.JD_CFD_LHJ : 1)){
       console.log(`\n老虎机只运行前 ${process.env.JD_CFD_LHJ ? process.env.JD_CFD_LHJ : 1} 个Cookie\n`);
       break
     }
