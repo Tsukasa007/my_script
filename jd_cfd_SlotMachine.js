@@ -1,9 +1,9 @@
 /*
 变量
-JD_CFD_LHJ 跑只跑前几个Cookie
+JD_CFD_LHJ 只跑前几个Cookie
 
 [Script]
-cron "10 7 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_ms.js,tag=财富岛老虎机
+cron "10 7 * * *" script-path=https://x.js,tag=财富岛老虎机
  */
 
 !function (t, r) {
