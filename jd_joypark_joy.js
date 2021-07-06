@@ -77,7 +77,7 @@ message = ""
 
 
 async function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
-  await $.wait(100)
+  await $.wait(20)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body={"taskId":"${taskId}","inviteType":"${inviteType}","inviterPin":"${inviterPin}","linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&_t=1625480372020&appid=activities_platform`,`joyBaseInfo`), async (err, resp, data) => {
       try {
@@ -99,7 +99,7 @@ async function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
 }
 
 async function getJoyList(){
-  await $.wait(100)
+  await $.wait(20)
   return new Promise(resolve => {
     $.get(taskGetClientActionUrl(`appid=activities_platform&body={"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}`,`joyList`), async (err, resp, data) => {
       try {
@@ -132,7 +132,7 @@ async function getJoyList(){
 }
 
 async function getGameShopList(){
-  await $.wait(100)
+  await $.wait(20)
   return new Promise(resolve => {
     $.get(taskGetClientActionUrl(`appid=activities_platform&body={"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}`,`gameShopList`), async (err, resp, data) => {
       try {
@@ -220,7 +220,7 @@ async function doJoyMergeAll(activityJoyList) {
 }
 
 async function doJoyMove(joyId,location){
-  await $.wait(100)
+  await $.wait(20)
   return new Promise(resolve => {
     $.post(taskGetClientActionUrl(`body={"joyId":${joyId},"location":${location},"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`joyMove`), async (err, resp, data) => {
       try {
@@ -240,7 +240,7 @@ async function doJoyMove(joyId,location){
 }
 
 async function doJoyMerge(joyId1,joyId2){
-  await $.wait(100)
+  await $.wait(20)
   return new Promise(resolve => {
     $.post(taskGetClientActionUrl(`body={"joyOneId":${joyId1},"joyTwoId":${joyId2},"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`joyMerge`), async (err, resp, data) => {
       try {
@@ -260,7 +260,7 @@ async function doJoyMerge(joyId1,joyId2){
 }
 
 async function doJoyBuy(level){
-  await $.wait(100)
+  await $.wait(20)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body={"level":${level},"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`joyBuy`), async (err, resp, data) => {
       try {
