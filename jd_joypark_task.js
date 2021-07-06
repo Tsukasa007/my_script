@@ -5,8 +5,8 @@
 更新地址：https://github.com/Tsukasa007/my_script
 ============Quantumultx===============
 [task_local]
-#汪汪乐园养joy
-0 0 9 * * * https://x.js, tag=汪汪乐园养joy, img-url=https://x.png, enabled=true
+#汪汪乐园每日任务
+0 0 9 * * * https://x.js, tag=汪汪乐园每日任务, img-url=https://x.png, enabled=true
 */
 const $ = new Env('汪汪乐园每日任务');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
