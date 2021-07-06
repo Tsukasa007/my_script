@@ -63,7 +63,7 @@ message = ""
       // }
 
       await getJoyBaseInfo()
-      await $.wait(500)
+
       if ($.joyBaseInfo && $.joyBaseInfo.invitePin) {
         $.log(`${$.name} - ${$.UserName}  助力码: ${$.joyBaseInfo.invitePin}`);
         $.invitePinTaskList.push($.joyBaseInfo.invitePin);
@@ -92,22 +92,22 @@ message = ""
         if (task.taskType === 'SIGN') {
           $.log(`${task.taskTitle} 签到`)
           await apDoTask(task.id,task.taskType,undefined);
-          await $.wait(500)
+
           $.log(`${task.taskTitle} 领取签到奖励`)
           await apTaskDrawAward(task.id,task.taskType);
-          await $.wait(500)
+
         }
         if (task.taskType === 'BROWSE_PRODUCT' || task.taskType === 'BROWSE_CHANNEL') {
           let productList = await apTaskDetail(task.id,task.taskType);
-          await $.wait(500)
+
           let productListNow = 0;
           if (productList.length === 0) {
             let resp = await apTaskDrawAward(task.id,task.taskType);
-            await $.wait(500)
+
             if (!resp.success) {
               $.log(`${task.taskTitle} 领取完成!`)
               productList = await apTaskDetail(task.id,task.taskType);
-              await $.wait(500)
+
             }
           }
           //做
@@ -118,7 +118,7 @@ message = ""
             }
             $.log(`${task.taskTitle} ${task.taskDoTimes}/${task.taskLimitTimes}`);
             let resp = await apDoTask(task.id,task.taskType,productList[productListNow].itemId,productList[productListNow].appid);
-            await $.wait(500)
+
             if (!resp.success) {
               $.log(`${task.taskTitle} 任务完成！`)
               break
@@ -129,7 +129,7 @@ message = ""
           //领
           for (let j = 0; j < task.taskLimitTimes; j++) {
             let resp = await apTaskDrawAward(task.id,task.taskType);
-            await $.wait(500)
+
             if (!resp.success) {
               $.log(`${task.taskTitle} 领取完成!`)
               break
@@ -138,7 +138,7 @@ message = ""
         }else if (task.taskType === 'SHARE_INVITE') {
           for (let j = 0; j < 5; j++) {
             let resp = await apTaskDrawAward(167,'SHARE_INVITE');
-            await $.wait(500)
+
             if (!resp.success) {
               break
             }
@@ -173,7 +173,7 @@ message = ""
         for (const invitePinTaskListKey of $.invitePinTaskList) {
           $.log(`【京东账号${$.index}】${$.nickName || $.UserName} 助力 ${invitePinTaskListKey}`)
           let resp = await getJoyBaseInfo(167,1,invitePinTaskListKey);
-          await $.wait(500)
+
           if (resp.success) {
             if (resp.data.helpState === 1) {
               $.log("助力成功！");
@@ -239,6 +239,7 @@ function getTaskList() {
  * @returns {Promise<unknown>}
  */
 async function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
+  await $.wait(1000)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body={"taskId":"${taskId}","inviteType":"${inviteType}","inviterPin":"${inviterPin}","linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&_t=1625480372020&appid=activities_platform`,`joyBaseInfo`), async (err, resp, data) => {
       try {
@@ -261,6 +262,7 @@ async function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
 
 
 async function apDoTask(taskId,taskType,itemId = '', appid = 'activities_platform') {
+  await $.wait(1000)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body={"taskType":"${taskType}","taskId":${taskId},"channel":4,"linkId":"LsQNxL7iWDlXUs6cFl-AAg","itemId":"${itemId}"}&appid=${appid}`,`apDoTask`), async (err, resp, data) => {
       try {
@@ -280,6 +282,7 @@ async function apDoTask(taskId,taskType,itemId = '', appid = 'activities_platfor
 }
 
 async function apTaskDetail(taskId,taskType) {
+  await $.wait(1000)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`functionId=apTaskDetail&body={"taskType":"${taskType}","taskId":${taskId},"channel":4,"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`apTaskDetail`), async (err, resp, data) => {
       try {
@@ -308,6 +311,7 @@ async function apTaskDetail(taskId,taskType) {
 }
 
 async function apTaskDrawAward(taskId,taskType) {
+  await $.wait(1000)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body={"taskType":"${taskType}","taskId":${taskId},"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`apTaskDrawAward`), async (err, resp, data) => {
       try {
