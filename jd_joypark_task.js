@@ -29,7 +29,6 @@ $.invitePinTaskList = ['W2j9nfW7Jzo5M5HApothz_CpgfyjcIG11hM6fOtM3es','cQoPKkkid0
 
 const JD_API_HOST = `https://api.m.jd.com/client.action`;
 message = ""
-$.shareuuid = "W2j9nfW7Jzo5M5HApothz_CpgfyjcIG11hM6fOtM3es" //wen总的助力码
 !(async () => {
   if (!cookiesArr[0]) {
     $.msg($.name, '【提示】请先获取cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/', {
@@ -64,7 +63,7 @@ $.shareuuid = "W2j9nfW7Jzo5M5HApothz_CpgfyjcIG11hM6fOtM3es" //wen总的助力码
       // }
 
       await getJoyBaseInfo()
-      $.wait(500)
+      await $.wait(500)
       if ($.joyBaseInfo && $.joyBaseInfo.invitePin) {
         $.log(`${$.name} - ${$.UserName}  助力码: ${$.joyBaseInfo.invitePin}`);
         $.invitePinTaskList.push($.joyBaseInfo.invitePin);
@@ -93,22 +92,22 @@ $.shareuuid = "W2j9nfW7Jzo5M5HApothz_CpgfyjcIG11hM6fOtM3es" //wen总的助力码
         if (task.taskType === 'SIGN') {
           $.log(`${task.taskTitle} 签到`)
           await apDoTask(task.id,task.taskType,undefined);
-          $.wait(500)
+          await $.wait(500)
           $.log(`${task.taskTitle} 领取签到奖励`)
           await apTaskDrawAward(task.id,task.taskType);
-          $.wait(500)
+          await $.wait(500)
         }
         if (task.taskType === 'BROWSE_PRODUCT' || task.taskType === 'BROWSE_CHANNEL') {
           let productList = await apTaskDetail(task.id,task.taskType);
-          $.wait(500)
+          await $.wait(500)
           let productListNow = 0;
           if (productList.length === 0) {
             let resp = await apTaskDrawAward(task.id,task.taskType);
-            $.wait(500)
+            await $.wait(500)
             if (!resp.success) {
               $.log(`${task.taskTitle} 领取完成!`)
               productList = await apTaskDetail(task.id,task.taskType);
-              $.wait(500)
+              await $.wait(500)
             }
           }
           //做
@@ -119,7 +118,7 @@ $.shareuuid = "W2j9nfW7Jzo5M5HApothz_CpgfyjcIG11hM6fOtM3es" //wen总的助力码
             }
             $.log(`${task.taskTitle} ${task.taskDoTimes}/${task.taskLimitTimes}`);
             let resp = await apDoTask(task.id,task.taskType,productList[productListNow].itemId,productList[productListNow].appid);
-            $.wait(500)
+            await $.wait(500)
             if (!resp.success) {
               $.log(`${task.taskTitle} 任务完成！`)
               break
@@ -130,7 +129,7 @@ $.shareuuid = "W2j9nfW7Jzo5M5HApothz_CpgfyjcIG11hM6fOtM3es" //wen总的助力码
           //领
           for (let j = 0; j < task.taskLimitTimes; j++) {
             let resp = await apTaskDrawAward(task.id,task.taskType);
-            $.wait(500)
+            await $.wait(500)
             if (!resp.success) {
               $.log(`${task.taskTitle} 领取完成!`)
               break
@@ -139,7 +138,7 @@ $.shareuuid = "W2j9nfW7Jzo5M5HApothz_CpgfyjcIG11hM6fOtM3es" //wen总的助力码
         }else if (task.taskType === 'SHARE_INVITE') {
           for (let j = 0; j < 5; j++) {
             let resp = await apTaskDrawAward(167,'SHARE_INVITE');
-            $.wait(500)
+            await $.wait(500)
             if (!resp.success) {
               break
             }
@@ -152,7 +151,7 @@ $.shareuuid = "W2j9nfW7Jzo5M5HApothz_CpgfyjcIG11hM6fOtM3es" //wen总的助力码
     }
   }
 
-  $.log("内部汪汪乐园互助")
+  $.log("\n\n内部汪汪乐园互助")
   try {
     for (let i = 0; i < cookiesArr.length; i++) {
       cookie = cookiesArr[i];
@@ -174,7 +173,7 @@ $.shareuuid = "W2j9nfW7Jzo5M5HApothz_CpgfyjcIG11hM6fOtM3es" //wen总的助力码
         for (const invitePinTaskListKey of $.invitePinTaskList) {
           $.log(`【京东账号${$.index}】${$.nickName || $.UserName} 助力 ${invitePinTaskListKey}`)
           let resp = await getJoyBaseInfo(167,1,invitePinTaskListKey);
-          $.wait(500)
+          await $.wait(500)
           if (resp.success) {
             if (resp.data.helpState === 1) {
               $.log("助力成功！");
