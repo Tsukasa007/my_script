@@ -250,9 +250,9 @@ async function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           data = JSON.parse(data);
-          if (inviterPin) {
-            $.log(JSON.stringify(data))
-          }
+          // if (inviterPin) {
+          //   $.log(JSON.stringify(data))
+          // }
           $.joyBaseInfo = data.data
         }
       } catch (e) {
