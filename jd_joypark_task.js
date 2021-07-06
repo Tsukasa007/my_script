@@ -207,9 +207,10 @@ message = ""
 //获取活动信息
 
 //任务列表
-function getTaskList() {
+async function getTaskList() {
+  await $.wait(1000)
   return new Promise(resolve => {
-    $.post(taskPostClientActionUrl(`body=%7B%22linkId%22%3A%22LsQNxL7iWDlXUs6cFl-AAg%22%7D&appid=activities_platform`,`apTaskList`), async (err, resp, data) => {
+    $.post(taskPostClientActionUrl(`body=%7B%22linkId%22%3A%22LsQNxL7iWDlXUs6cFl-AAg%22%7D&appid=activities_platform`, `apTaskList`), async (err, resp, data) => {
       $.log('=== 任务列表 start ===')
       try {
         if (err) {
@@ -218,7 +219,7 @@ function getTaskList() {
         } else {
           data = JSON.parse(data);
           $.taskList = data.data
-          $.taskList.forEach( row =>{
+          $.taskList.forEach(row => {
             $.log(`${row.taskTitle} ${row.taskDoTimes}/${row.taskLimitTimes}`)
           })
           $.log('=== 任务列表 end  ===')
