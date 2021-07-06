@@ -2,7 +2,7 @@
 TT007
 请确保新用户助力过开工位，否则开启游戏了就不算新用户，后面就不能助力开工位了！！！！！！！！！！
 
-更新地址：https://x/x.js
+https://github.com/Tsukasa007/my_script
 
 [Script]
 40 8-23/3 * * *  script-path=https://x.js,tag=汪汪乐园每日任务

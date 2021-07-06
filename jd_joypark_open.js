@@ -1,7 +1,7 @@
 /*
 TT007
 
-更新地址：https://x/x.js
+https://github.com/Tsukasa007/my_script
 
 从CK1 开始开工位 1开满了开2 如此类推
 
