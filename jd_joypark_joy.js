@@ -54,7 +54,6 @@ message = ""
 
       //从低合到高
       await doJoyMergeeAll($.activityJoyList)
-      debugger
       //购买合成
 
 
