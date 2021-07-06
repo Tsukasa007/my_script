@@ -1,4 +1,7 @@
 /*
+ENV
+JOYPARK_JOY_START = 2     只做前几个CK
+
 更新地址：https://github.com/Tsukasa007/my_script
 ============Quantumultx===============
 [task_local]
@@ -33,12 +36,18 @@ message = ""
     return;
   }
   for (let i = 0; i < cookiesArr.length; i++) {
+    if (process.env.JOYPARK_JOY_START && i == process.env.JOYPARK_JOY_START){
+      console.log(`\n汪汪乐园养joy 只运行 ${process.env.JD_CFD_LHJ ? process.env.JD_CFD_LHJ : 1} 个Cookie\n`);
+      break
+    }
+
     cookie = cookiesArr[i];
     if (cookie) {
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
       $.index = i + 1;
       $.isLogin = true;
       $.nickName = '';
+      $.maxJoyCount = 10
       console.log(`\n\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
 
       let joyBaseInfo = await getJoyBaseInfo();
@@ -53,7 +62,7 @@ message = ""
       await doJoyMoveDownAll($.workJoyInfoList)
 
       //从低合到高
-      await doJoyMergeeAll($.activityJoyList)
+      await doJoyMergeAll($.activityJoyList)
       //购买合成
 
 
@@ -143,6 +152,19 @@ async function getGameShopList(){
   })
 }
 
+async function doJoyMoveUpAll(activityJoyList,workJoyInfoList) {
+  let workJoyInfoUnlockList = workJoyInfoList.filter(row => row.unlock && row.joyDTO === null)
+  if (activityJoyList.length !== 0 && workJoyInfoUnlockList.length !== 0) {
+    let maxLevelJoy = Math.max.apply(Math, activityJoyList.map(function(o) {return o.level}))
+    let maxLevelJoyList = activityJoyList.filter(row => row.level === maxLevelJoy)
+    $.log(`下地干活！ joyId= ${maxLevelJoyList[0].id} location= ${workJoyInfoUnlockList[0].location}`)
+    await doJoyMove(maxLevelJoyList[0].id, workJoyInfoUnlockList[0].location)
+    await getJoyList()
+    await doJoyMoveUpAll($.activityJoyList,$.workJoyInfoList)
+  }
+  $.log(`下地完成了！`)
+}
+
 async function doJoyMoveDownAll(workJoyInfoList) {
   if (workJoyInfoList.filter(row => row.joyDTO).length === 0) {
     $.log(`工位清理完成！`)
@@ -159,23 +181,40 @@ async function doJoyMoveDownAll(workJoyInfoList) {
   await doJoyMoveDownAll($.workJoyInfoList)
 }
 
-async function doJoyMergeeAll(activityJoyList) {
+async function doJoyMergeAll(activityJoyList) {
   let minLevel = Math.min.apply(Math, activityJoyList.map(function(o) {return o.level}))
   let joyMinLevelArr = activityJoyList.filter(row => row.level === minLevel);
+
+  let gameShopList = await getGameShopList()
+  let joyBaseInfo = await getJoyBaseInfo()
+  let fastBuyLevel = joyBaseInfo.fastBuyLevel
+  let fastBuyCoin = joyBaseInfo.fastBuyCoin
+  let joyCoin = joyBaseInfo.joyCoin
+
   if (joyMinLevelArr.length >= 2) {
     $.log(`开始合成 ${minLevel} ${joyMinLevelArr[0].id} <=> ${joyMinLevelArr[1].id}`);
-    await doJoyMergee(joyMinLevelArr[0].id, joyMinLevelArr[1].id);
+    await doJoyMerge(joyMinLevelArr[0].id, joyMinLevelArr[1].id);
     await getJoyList()
-    await doJoyMergeeAll($.activityJoyList)
+    await doJoyMergeAll($.activityJoyList)
+  }else if(joyMinLevelArr.length === 1 && joyMinLevelArr[0].level < fastBuyLevel){
+    let buyResp = await doJoyBuy(joyMinLevelArr[0].level);
+    if (buyResp.success) {
+      await getJoyList();
+      await doJoyMergeAll($.activityJoyList);
+    } else {
+      $.log("没钱了上位吧！")
+      await doJoyMoveUpAll($.activityJoyList,$.workJoyInfoList)
+    }
   } else {
     $.log(`没有需要合成的joy 开始买买买🛒🛒🛒🛒🛒🛒🛒🛒`)
-    let joyBaseInfo = await getJoyBaseInfo()
-    let fastBuyLevel = joyBaseInfo.fastBuyLevel
     $.log(`现在最高可以购买: ${fastBuyLevel}  购买 ${fastBuyLevel} 的joy   你还有${joyBaseInfo.joyCoin}金币`)
     let buyResp = await doJoyBuy(fastBuyLevel);
     if (buyResp.success) {
       await getJoyList();
-      await doJoyMergeeAll($.activityJoyList)
+      await doJoyMergeAll($.activityJoyList);
+    } else {
+      $.log("没钱了上位吧！")
+      await doJoyMoveUpAll($.activityJoyList,$.workJoyInfoList)
     }
   }
 }
@@ -200,7 +239,7 @@ async function doJoyMove(joyId,location){
   })
 }
 
-async function doJoyMergee(joyId1,joyId2){
+async function doJoyMerge(joyId1,joyId2){
   await $.wait(4000)
   return new Promise(resolve => {
     $.post(taskGetClientActionUrl(`body={"joyOneId":${joyId1},"joyTwoId":${joyId2},"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`joyMerge`), async (err, resp, data) => {
@@ -230,7 +269,7 @@ async function doJoyBuy(level){
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           data = JSON.parse(data);
-          $.log(`购买joy level: ${level} ${data.success ? `成功！` : `失败！`}`)
+          $.log(`购买joy level: ${level} ${data.success ? `成功！` : `失败！${data.errMsg} code=${data.code}`}`)
         }
       } catch (e) {
         $.logErr(e, resp)
