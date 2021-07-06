@@ -110,12 +110,12 @@ async function getJoyList(){
           data = JSON.parse(data);
           $.log(`\n===== 【京东账号${$.index}】${$.nickName || $.UserName} joy 状态 start =====`)
           $.log("在逛街的joy⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️")
-          for (const activityJoyListElement of data.data.activityJoyList) {
-            $.log(`id:${activityJoyListElement.id}|name: ${activityJoyListElement.name}|level: ${activityJoyListElement.level}`)
+          for (let i = 0; i < data.data.activityJoyList.length; i++) {
+            $.log(`id:${data.data.activityJoyList[i].id}|name: ${data.data.activityJoyList[i].name}|level: ${data.data.activityJoyList[i].level}`)
           }
           $.log("\n在铲土的joy⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️")
-          for (const workJoyInfoListElement of data.data.workJoyInfoList) {
-            $.log(`工位: ${workJoyInfoListElement.location} [${workJoyInfoListElement.unlock ? `已开` : `未开`}]|joy= ${workJoyInfoListElement.joyDTO ? `id:${workJoyInfoListElement.joyDTO.id}|name: ${workJoyInfoListElement.joyDTO.name}|level: ${workJoyInfoListElement.joyDTO.level}` : `毛都没有`}`)
+          for (let i = 0; i < data.data.workJoyInfoList.length; i++) {
+            $.log(`工位: ${data.data.workJoyInfoList[i].location} [${data.data.workJoyInfoList[i].unlock ? `已开` : `未开`}]|joy= ${data.data.workJoyInfoList[i].joyDTO ? `id:${data.data.workJoyInfoList[i].joyDTO.id}|name: ${data.data.workJoyInfoList[i].joyDTO.name}|level: ${data.data.workJoyInfoList[i].joyDTO.level}` : `毛都没有`}`)
           }
           $.log(`===== 京东账号${$.index}】${$.nickName || $.UserName} joy 状态  end  =====\n`)
           $.activityJoyList = data.data.activityJoyList
@@ -170,10 +170,10 @@ async function doJoyMoveDownAll(workJoyInfoList) {
     $.log(`工位清理完成！`)
     return true
   }
-  for (let workJoyInfoListElement of workJoyInfoList) {
-    if (workJoyInfoListElement.unlock && workJoyInfoListElement.joyDTO) {
-      $.log(`从工位移除 => id:${workJoyInfoListElement.joyDTO.id}|name: ${workJoyInfoListElement.joyDTO.name}|level: ${workJoyInfoListElement.joyDTO.level}`)
-      await doJoyMove(workJoyInfoListElement.joyDTO.id, 0)
+  for (let i = 0; i < workJoyInfoList.length; i++) {
+    if (workJoyInfoList[i].unlock && workJoyInfoList[i].joyDTO) {
+      $.log(`从工位移除 => id:${workJoyInfoList[i].joyDTO.id}|name: ${workJoyInfoList[i].joyDTO.name}|level: ${workJoyInfoList[i].joyDTO.level}`)
+      await doJoyMove(workJoyInfoList[i].joyDTO.id, 0)
     }
   }
   //check
