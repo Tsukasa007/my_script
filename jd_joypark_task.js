@@ -171,9 +171,10 @@ message = ""
           }
           continue
         }
-        for (const invitePinTaskListKey of $.invitePinTaskList) {
-          $.log(`【京东账号${$.index}】${$.nickName || $.UserName} 助力 ${invitePinTaskListKey}`)
-          let resp = await getJoyBaseInfo(167,1,invitePinTaskListKey);
+
+        for (let j = 0; j < $.invitePinTaskList; j++) {
+          $.log(`【京东账号${$.index}】${$.nickName || $.UserName} 助力 ${invitePinTaskList[j]}`)
+          let resp = await getJoyBaseInfo(167,1,invitePinTaskList[j]);
 
           if (resp.success) {
             if (resp.data.helpState === 1) {
@@ -193,6 +194,30 @@ message = ""
             break
           }
         }
+
+
+        // for (const invitePinTaskListKey of $.invitePinTaskList) {
+        //   $.log(`【京东账号${$.index}】${$.nickName || $.UserName} 助力 ${invitePinTaskListKey}`)
+        //   let resp = await getJoyBaseInfo(167,1,invitePinTaskListKey);
+        //
+        //   if (resp.success) {
+        //     if (resp.data.helpState === 1) {
+        //       $.log("助力成功！");
+        //     } else if (resp.data.helpState === 0){
+        //       $.log("自己不能助力自己！");
+        //     } else if (resp.data.helpState === 2){
+        //       $.log("助力过了！");
+        //     } else if (resp.data.helpState === 3){
+        //       $.log("没有助力次数了！");
+        //       break
+        //     }else if (resp.data.helpState === 4){
+        //       $.log("这个B助力满了！");
+        //     }
+        //   }else {
+        //     $.log("数据异常 助力失败！\n\n")
+        //     break
+        //   }
+        // }
       }
     }
   }catch (e){
