@@ -208,7 +208,7 @@ message = ""
 
 //任务列表
 async function getTaskList() {
-  await $.wait(1000)
+  await $.wait(200)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body=%7B%22linkId%22%3A%22LsQNxL7iWDlXUs6cFl-AAg%22%7D&appid=activities_platform`, `apTaskList`), async (err, resp, data) => {
       $.log('=== 任务列表 start ===')
@@ -241,7 +241,7 @@ async function getTaskList() {
  * @returns {Promise<unknown>}
  */
 async function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
-  await $.wait(1000)
+  await $.wait(200)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body={"taskId":"${taskId}","inviteType":"${inviteType}","inviterPin":"${inviterPin}","linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&_t=1625480372020&appid=activities_platform`,`joyBaseInfo`), async (err, resp, data) => {
       try {
@@ -264,7 +264,7 @@ async function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
 
 
 async function apDoTask(taskId,taskType,itemId = '', appid = 'activities_platform') {
-  await $.wait(1000)
+  await $.wait(200)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body={"taskType":"${taskType}","taskId":${taskId},"channel":4,"linkId":"LsQNxL7iWDlXUs6cFl-AAg","itemId":"${itemId}"}&appid=${appid}`,`apDoTask`), async (err, resp, data) => {
       try {
@@ -284,7 +284,7 @@ async function apDoTask(taskId,taskType,itemId = '', appid = 'activities_platfor
 }
 
 async function apTaskDetail(taskId,taskType) {
-  await $.wait(1000)
+  await $.wait(200)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`functionId=apTaskDetail&body={"taskType":"${taskType}","taskId":${taskId},"channel":4,"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`apTaskDetail`), async (err, resp, data) => {
       try {
@@ -313,7 +313,7 @@ async function apTaskDetail(taskId,taskType) {
 }
 
 async function apTaskDrawAward(taskId,taskType) {
-  await $.wait(1000)
+  await $.wait(200)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body={"taskType":"${taskType}","taskId":${taskId},"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`apTaskDrawAward`), async (err, resp, data) => {
       try {
