@@ -1,12 +1,12 @@
 /*
-TT007
-
-https://github.com/Tsukasa007/my_script
 
 从CK1 开始开工位 1开满了开2 如此类推
 
-[Script]
-0 0 10 * * *  script-path=https://x.js,tag=汪汪乐园开工位
+更新地址：https://github.com/Tsukasa007/my_script
+============Quantumultx===============
+[task_local]
+#汪汪乐园养joy
+0 0 9 * * * https://x.js, tag=汪汪乐园养joy, img-url=https://x.png, enabled=true
 */
 const $ = new Env('汪汪乐园开工位');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
