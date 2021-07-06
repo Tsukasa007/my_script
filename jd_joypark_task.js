@@ -4,12 +4,10 @@ TT007
 
 更新地址：https://x/x.js
 
-从CK1 开始开工位 1开满了开2 如此类推
-
 [Script]
-40 8-23/3 * * *  script-path=https://x.js,tag=汪汪乐园
+40 8-23/3 * * *  script-path=https://x.js,tag=汪汪乐园每日任务
 */
-const $ = new Env('汪汪乐园');
+const $ = new Env('汪汪乐园每日任务');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 // cupExid = $.isNode() ? (process.env.Cupexid ? process.env.Cupexid : 38) : ($.getdata("Cupexid") ? $.getdata("Cupexid") : 38);
 
