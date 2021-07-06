@@ -6,7 +6,7 @@ JOYPARK_JOY_START = 2     只做前几个CK
 ============Quantumultx===============
 [task_local]
 #汪汪乐园养joy
-0 0 9 * * * https://x.js, tag=汪汪乐园养joy, img-url=https://x.png, enabled=true
+0 0 9 * * * https://raw.githubusercontent.com/Tsukasa007/my_script/master/jd_joypark_joy.js, tag=汪汪乐园养joy, img-url=https://x.png, enabled=true
 */
 const $ = new Env('汪汪乐园养joy');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
