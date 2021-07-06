@@ -11,7 +11,6 @@ TT007
 */
 const $ = new Env('汪汪乐园开工位');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
-// cupExid = $.isNode() ? (process.env.Cupexid ? process.env.Cupexid : 38) : ($.getdata("Cupexid") ? $.getdata("Cupexid") : 38);
 
 const notify = $.isNode() ? require('./sendNotify') : '';
 //IOS等用户直接用NobyDa的jd cookie
