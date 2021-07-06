@@ -207,7 +207,7 @@ message = ""
 //获取活动信息
 
 //任务列表
-async function getTaskList() {
+function getTaskList() {
   //await $.wait(20)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body=%7B%22linkId%22%3A%22LsQNxL7iWDlXUs6cFl-AAg%22%7D&appid=activities_platform`, `apTaskList`), async (err, resp, data) => {
@@ -240,7 +240,7 @@ async function getTaskList() {
  * @param inviterPin
  * @returns {Promise<unknown>}
  */
-async function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
+function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
   //await $.wait(20)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body={"taskId":"${taskId}","inviteType":"${inviteType}","inviterPin":"${inviterPin}","linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&_t=1625480372020&appid=activities_platform`,`joyBaseInfo`), async (err, resp, data) => {
@@ -265,7 +265,7 @@ async function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
 }
 
 
-async function apDoTask(taskId,taskType,itemId = '', appid = 'activities_platform') {
+function apDoTask(taskId,taskType,itemId = '', appid = 'activities_platform') {
   //await $.wait(20)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body={"taskType":"${taskType}","taskId":${taskId},"channel":4,"linkId":"LsQNxL7iWDlXUs6cFl-AAg","itemId":"${itemId}"}&appid=${appid}`,`apDoTask`), async (err, resp, data) => {
@@ -285,7 +285,7 @@ async function apDoTask(taskId,taskType,itemId = '', appid = 'activities_platfor
   })
 }
 
-async function apTaskDetail(taskId,taskType) {
+function apTaskDetail(taskId,taskType) {
   //await $.wait(20)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`functionId=apTaskDetail&body={"taskType":"${taskType}","taskId":${taskId},"channel":4,"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`apTaskDetail`), async (err, resp, data) => {
@@ -314,7 +314,7 @@ async function apTaskDetail(taskId,taskType) {
   })
 }
 
-async function apTaskDrawAward(taskId,taskType) {
+function apTaskDrawAward(taskId,taskType) {
   //await $.wait(20)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body={"taskType":"${taskType}","taskId":${taskId},"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`apTaskDrawAward`), async (err, resp, data) => {
