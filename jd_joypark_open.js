@@ -6,7 +6,6 @@ TT007
 从CK1 开始开工位 1开满了开2 如此类推
 
 [Script]
-#汪汪乐园开工位
 0 0 10 * * *  script-path=https://x.js,tag=汪汪乐园开工位
 */
 const $ = new Env('汪汪乐园开工位');
