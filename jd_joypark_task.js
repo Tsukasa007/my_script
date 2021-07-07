@@ -192,9 +192,9 @@ function getTaskList() {
         } else {
           data = JSON.parse(data);
           $.taskList = data.data
-          $.taskList.forEach(row => {
+          for (const row of $.taskList) {
             $.log(`${row.taskTitle} ${row.taskDoTimes}/${row.taskLimitTimes}`)
-          })
+          }
           $.log('=== 任务列表 end  ===')
         }
       } catch (e) {

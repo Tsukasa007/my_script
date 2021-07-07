@@ -99,7 +99,7 @@ function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
   })
 }
 
-async function getJoyList(){
+function getJoyList(){
   //await $.wait(20)
   return new Promise(resolve => {
     $.get(taskGetClientActionUrl(`appid=activities_platform&body={"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}`,`joyList`), async (err, resp, data) => {
