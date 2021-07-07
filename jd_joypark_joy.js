@@ -1,6 +1,7 @@
 /*
 ENV
 JOYPARK_JOY_START = 2     只做前几个CK
+JOY_COIN_MAXIMIZE = 0     最大化硬币收益，如果合成后全部挖土后还有空位，则开启此模式（默认开启） 0关闭 1开启
 
 请确保新用户助力过开工位，否则开启游戏了就不算新用户，后面就不能助力开工位了！！！！！！！！！！
 
@@ -37,6 +38,9 @@ if ($.isNode()) {
   cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
 
+//最大化硬币收益模式
+$.JOY_COIN_MAXIMIZE = process.env.JOY_COIN_MAXIMIZE !== '0'
+$.log(`最大化收益模式: 已${$.JOY_COIN_MAXIMIZE ? `默认已开启` : `关闭`}  `)
 
 const JD_API_HOST = `https://api.m.jd.com/client.action`;
 message = ""
@@ -183,8 +187,14 @@ async function doJoyMoveUpAll(activityJoyList, workJoyInfoList) {
     await doJoyMove(maxLevelJoyList[0].id, workJoyInfoUnlockList[0].location)
     await getJoyList()
     await doJoyMoveUpAll($.activityJoyList, $.workJoyInfoList)
+  }else if ($.JOY_COIN_MAXIMIZE) {
+    await joyCoinMaximize(workJoyInfoUnlockList)
   }
-  $.log(`下地完成了！`)
+  $.log(`下地完成了！`);
+
+}
+
+async function joyCoinMaximize(workJoyInfoUnlockList) {
   if (workJoyInfoUnlockList.length !== 0 && $.hasJoyCoin) {
     $.log(`竟然还有工位挖土？开启瞎买瞎下地模式！`);
     let joyBaseInfo = await getJoyBaseInfo()
