@@ -1,0 +1,55 @@
+{
+  "success": true,
+  "code": 0,
+  "errMsg": "success",
+  "data": {
+    "activityId": null,
+    "level": 1,
+    "scene": 1,
+    "hasStartCoin": 0,
+    "startCoin": 10000,
+    "guideStep": 0,
+    "userIcon": "http://storage.360buyimg.com/i.imageUpload/53465846514454435a31353939303936363435303338_mid.jpg",
+    "joyCoin": 5000,
+    "bigRewardState": null,
+    "workPlaceUnlock": 0,
+    "speed": "1",
+    "upSpeed": 0,
+    "maxReward": "{\"rewardImgList\":[\"jfs/t1/190700/6/11734/99836/60e17d8eEab112dc6/e8c61bc2937b53a8.png\",\"jfs/t1/186443/15/11401/42768/60e17da0E497176af/c93969886a78eba2.png\",\"jfs/t1/178771/25/12623/88109/60e17db5E1c47ce94/c6046a8f88d56c07.png\",\"jfs/t1/195669/32/11692/75352/60e17dc0E6645fbf2/06eb9e2c78032b5c.png\",\"jfs/t1/191139/31/11650/79296/60e17dceE20331eb8/89f3741a627c7ade.png\",\"jfs/t1/189168/15/11602/86048/60e17de7E1ea60c0f/bbb08fd7cbbd74f5.png\",\"jfs/t1/186726/21/11692/82381/60e17defE1d3ae134/071e71e93b6d45c8.png\",\"jfs/t1/182570/8/12619/72169/60e17df9E6aac8963/20fd7cd0e08b400d.png\"],\"rewardLocation\":6}",
+    "leaveJoyCoin": null,
+    "fastBuyLevel": 1,
+    "fastBuyCoin": 100,
+    "invitePin": "CfgxIoNL6R_NkZrLj7lU5w",
+    "helpType": null,
+    "helpState": 0,
+    "serverTime": 1625556827683
+  }
+}
+
+
+
+{
+  "success": true,
+  "code": 0,
+  "errMsg": "success",
+  "data": {
+    "activityId": null,
+    "level": 1,
+    "scene": 1,
+    "hasStartCoin": 0,
+    "startCoin": 10000,
+    "guideStep": 0,
+    "userIcon": null,
+    "joyCoin": 5000,
+    "bigRewardState": null,
+    "workPlaceUnlock": 0,
+    "speed": "1",
+    "upSpeed": 0,
+    "maxReward": "{\"rewardImgList\":[\"jfs/t1/190700/6/11734/99836/60e17d8eEab112dc6/e8c61bc2937b53a8.png\",\"jfs/t1/186443/15/11401/42768/60e17da0E497176af/c93969886a78eba2.png\",\"jfs/t1/178771/25/12623/88109/60e17db5E1c47ce94/c6046a8f88d56c07.png\",\"jfs/t1/195669/32/11692/75352/60e17dc0E6645fbf2/06eb9e2c78032b5c.png\",\"jfs/t1/191139/31/11650/79296/60e17dceE20331eb8/89f3741a627c7ade.png\",\"jfs/t1/189168/15/11602/86048/60e17de7E1ea60c0f/bbb08fd7cbbd74f5.png\",\"jfs/t1/186726/21/11692/82381/60e17defE1d3ae134/071e71e93b6d45c8.png\",\"jfs/t1/182570/8/12619/72169/60e17df9E6aac8963/20fd7cd0e08b400d.png\"],\"rewardLocation\":6}",
+    "leaveJoyCoin": null,
+    "fastBuyLevel": 1,
+    "fastBuyCoin": 100,
+    "invitePin": "bRAgcTi7xX4kzTvCwgc4j2MzLG9DSLvNhZ-goZjMMAY",
+    "helpType": null,
+    "helpState": 0,
+    "serverTime": 1,

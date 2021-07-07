@@ -24,8 +24,7 @@ if ($.isNode()) {
   cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
 
-// 汪汪乐园 助力作者2个号，放心一般都是满的，爱护作者，人人有责
-$.invitePinTaskList = ['W2j9nfW7Jzo5M5HApothz_CpgfyjcIG11hM6fOtM3es','cQoPKkkid0zr22o7Oej5yO0IMMy8J5ssaaGBRxTyspo']
+$.invitePinTaskList = []
 
 const JD_API_HOST = `https://api.m.jd.com/client.action`;
 message = ""
