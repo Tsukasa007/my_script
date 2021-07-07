@@ -94,19 +94,25 @@ message = ""
           }
           //做
           while (task.taskLimitTimes - task.taskDoTimes >= 0) {
+
             if (productList.length === 0) {
-              $.log(`${task.taskTitle} 活动火爆，素材库没有素材，我也不知道啥回事 = = `)
-              break
+              $.log(`${task.taskTitle} 活动火爆，素材库没有素材，我也不知道啥回事 = = `);
+              break;
             }
             $.log(`${task.taskTitle} ${task.taskDoTimes}/${task.taskLimitTimes}`);
             let resp = await apDoTask(task.id,task.taskType,productList[productListNow].itemId,productList[productListNow].appid);
 
-            if (!resp.success) {
+            if (resp.code === 2005 || resp.code === 0) {
               $.log(`${task.taskTitle} 任务完成！`)
               break
+            }else{
+              $.log(`${resp.echo} 任务失败！`)
             }
             productListNow++;
             task.taskDoTimes++;
+            if (!productList[productListNow]) {
+              break
+            }
           }
           //领
           for (let j = 0; j < task.taskLimitTimes; j++) {
@@ -238,7 +244,7 @@ function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
 }
 
 
-function apDoTask(taskId,taskType,itemId = '', appid = 'activities_platform') {
+function apDoTask(taskId,taskType,itemId = '',appid = 'activities_platform') {
   //await $.wait(20)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body={"taskType":"${taskType}","taskId":${taskId},"channel":4,"linkId":"LsQNxL7iWDlXUs6cFl-AAg","itemId":"${itemId}"}&appid=${appid}`,`apDoTask`), async (err, resp, data) => {
