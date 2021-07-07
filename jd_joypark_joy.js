@@ -289,7 +289,7 @@ function doJoyMove(joyId,location){
   })
 }
 
-function doJoyMerge(joyId1,joyId2){
+async function doJoyMerge(joyId1,joyId2){
   //await $.wait(20)
   return new Promise(resolve => {
     $.post(taskGetClientActionUrl(`body={"joyOneId":${joyId1},"joyTwoId":${joyId2},"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`joyMerge`), async (err, resp, data) => {
