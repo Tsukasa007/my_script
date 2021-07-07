@@ -219,7 +219,7 @@ function getTaskList() {
  * @param inviterPin
  * @returns {Promise<unknown>}
  */
-function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
+async function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
   //await $.wait(20)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body={"taskId":"${taskId}","inviteType":"${inviteType}","inviterPin":"${inviterPin}","linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&_t=1625480372020&appid=activities_platform`,`joyBaseInfo`), async (err, resp, data) => {

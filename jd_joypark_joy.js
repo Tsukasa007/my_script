@@ -51,14 +51,12 @@ message = ""
       $.maxJoyCount = 10
       console.log(`\n\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
 
-      let joyBaseInfo = await getJoyBaseInfo();
-      let nowLevel = joyBaseInfo.level
-      let activityJoyList,workJoyInfoList;
+      await getJoyBaseInfo();
       $.activityJoyList = []
       $.workJoyInfoList = []
       await getJoyList();
 
-      let gameShopList = await getGameShopList()
+      await getGameShopList()
       //清理工位
       await doJoyMoveDownAll($.workJoyInfoList)
 
