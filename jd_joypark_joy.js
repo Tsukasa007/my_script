@@ -1,7 +1,7 @@
 /*
 ENV
-JOYPARK_JOY_START = 2     只做前几个CK
-JOY_COIN_MAXIMIZE = 0     最大化硬币收益，如果合成后全部挖土后还有空位，则开启此模式（默认开启） 0关闭 1开启
+JOYPARK_JOY_START =      只做前几个CK
+JOY_COIN_MAXIMIZE =      最大化硬币收益，如果合成后全部挖土后还有空位，则开启此模式（默认开启） 0关闭 1开启
 
 请确保新用户助力过开工位，否则开启游戏了就不算新用户，后面就不能助力开工位了！！！！！！！！！！
 
@@ -70,26 +70,16 @@ message = ""
 
       //下地后还有有钱买Joy并且买了Joy
       $.hasJoyCoin = true
-
       await getJoyBaseInfo();
       $.activityJoyList = []
       $.workJoyInfoList = []
       await getJoyList(true);
-
       await getGameShopList()
       //清理工位
       await doJoyMoveDownAll($.workJoyInfoList)
-
       //从低合到高
       await doJoyMergeAll($.activityJoyList)
-
-
       await getJoyList(true)
-
-
-
-
-
     }
   }
 })()
