@@ -47,7 +47,7 @@ message = ""
     return;
   }
   for (let i = 0; i < cookiesArr.length; i++) {
-    $.wait(50)
+    //$.wait(50)
     if (process.env.JOYPARK_JOY_START && i == process.env.JOYPARK_JOY_START){
       console.log(`\n汪汪乐园养joy 只运行 ${process.env.JD_CFD_LHJ ? process.env.JD_CFD_LHJ : 1} 个Cookie\n`);
       break
@@ -65,7 +65,7 @@ message = ""
       await getJoyBaseInfo();
       $.activityJoyList = []
       $.workJoyInfoList = []
-      await getJoyList();
+      await getJoyList(true);
 
       await getGameShopList()
       //清理工位
@@ -108,7 +108,7 @@ function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
   })
 }
 
-function getJoyList(){
+function getJoyList(printLog = false){
   //await $.wait(20)
   return new Promise(resolve => {
     $.get(taskGetClientActionUrl(`appid=activities_platform&body={"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}`,`joyList`), async (err, resp, data) => {
@@ -118,18 +118,21 @@ function getJoyList(){
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           data = JSON.parse(data);
-          $.log(`\n===== 【京东账号${$.index}】${$.nickName || $.UserName} joy 状态 start =====`)
-          $.log("在逛街的joy⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️")
-          for (let i = 0; i < data.data.activityJoyList.length; i++) {
-            $.wait(50)
-            $.log(`id:${data.data.activityJoyList[i].id}|name: ${data.data.activityJoyList[i].name}|level: ${data.data.activityJoyList[i].level}`)
+          if (printLog) {
+            $.log(`\n===== 【京东账号${$.index}】${$.nickName || $.UserName} joy 状态 start =====`)
+            $.log("在逛街的joy⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️")
+            for (let i = 0; i < data.data.activityJoyList.length; i++) {
+              //$.wait(50);
+              $.log(`id:${data.data.activityJoyList[i].id}|name: ${data.data.activityJoyList[i].name}|level: ${data.data.activityJoyList[i].level}`);
+            }
+            $.log("\n在铲土的joy⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️")
+            for (let i = 0; i < data.data.workJoyInfoList.length; i++) {
+              //$.wait(50)
+              $.log(`工位: ${data.data.workJoyInfoList[i].location} [${data.data.workJoyInfoList[i].unlock ? `已开` : `未开`}]|joy= ${data.data.workJoyInfoList[i].joyDTO ? `id:${data.data.workJoyInfoList[i].joyDTO.id}|name: ${data.data.workJoyInfoList[i].joyDTO.name}|level: ${data.data.workJoyInfoList[i].joyDTO.level}` : `毛都没有`}`)
+            }
+            $.log(`===== 京东账号${$.index}】${$.nickName || $.UserName} joy 状态  end  =====\n`)
           }
-          $.log("\n在铲土的joy⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️")
-          for (let i = 0; i < data.data.workJoyInfoList.length; i++) {
-            $.wait(50)
-            $.log(`工位: ${data.data.workJoyInfoList[i].location} [${data.data.workJoyInfoList[i].unlock ? `已开` : `未开`}]|joy= ${data.data.workJoyInfoList[i].joyDTO ? `id:${data.data.workJoyInfoList[i].joyDTO.id}|name: ${data.data.workJoyInfoList[i].joyDTO.name}|level: ${data.data.workJoyInfoList[i].joyDTO.level}` : `毛都没有`}`)
-          }
-          $.log(`===== 京东账号${$.index}】${$.nickName || $.UserName} joy 状态  end  =====\n`)
+
           $.activityJoyList = data.data.activityJoyList
           $.workJoyInfoList = data.data.workJoyInfoList
 
@@ -177,6 +180,7 @@ async function doJoyMoveUpAll(activityJoyList, workJoyInfoList) {
     await doJoyMoveUpAll($.activityJoyList, $.workJoyInfoList)
   }
   $.log(`下地完成了！`)
+  await getJoyList(true)
 }
 
 async function doJoyMoveDownAll(workJoyInfoList) {
@@ -185,7 +189,7 @@ async function doJoyMoveDownAll(workJoyInfoList) {
     return true
   }
   for (let i = 0; i < workJoyInfoList.length; i++) {
-    $.wait(50)
+    //$.wait(50)
     if (workJoyInfoList[i].unlock && workJoyInfoList[i].joyDTO) {
       $.log(`从工位移除 => id:${workJoyInfoList[i].joyDTO.id}|name: ${workJoyInfoList[i].joyDTO.name}|level: ${workJoyInfoList[i].joyDTO.level}`)
       await doJoyMove(workJoyInfoList[i].joyDTO.id, 0)
@@ -267,7 +271,7 @@ function doJoyMerge(joyId1,joyId2){
           console.log(`${JSON.stringify(err)}`)
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
-          data = JSON.parse(data);$.log(`合成 ${joyId1} <=> ${joyId2} ${data.success ? `成功！` : `失败！${data.errMsg} code=${data.code}`}`)
+          data = JSON.parse(data);$.log(`合成 ${joyId1} <=> ${joyId2} ${data.success ? `成功！` : `失败！【${data.errMsg}】 code=${data.code}`}`)
         }
       } catch (e) {
         $.logErr(e, resp)
