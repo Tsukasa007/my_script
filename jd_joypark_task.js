@@ -157,7 +157,6 @@ message = ""
         }
         continue
       }
-      $.log(JSON.stringify($.invitePinTaskList))
       for (const invitePinTaskListKey of $.invitePinTaskList) {
         $.log(`【京东账号${$.index}】${$.nickName || $.UserName} 助力 ${invitePinTaskListKey}`)
         let resp = await getJoyBaseInfo(167,1,invitePinTaskListKey);
