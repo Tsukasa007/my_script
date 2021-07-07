@@ -21,7 +21,6 @@ cron "40 0-23/3 * * *" script-path=jd_joypark_joy.js,tag=汪汪乐园养joy
 */
 const $ = new Env('汪汪乐园养joy');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
-// cupExid = $.isNode() ? (process.env.Cupexid ? process.env.Cupexid : 38) : ($.getdata("Cupexid") ? $.getdata("Cupexid") : 38);
 
 const notify = $.isNode() ? require('./sendNotify') : '';
 //IOS等用户直接用NobyDa的jd cookie
@@ -40,6 +39,7 @@ if ($.isNode()) {
 const JD_API_HOST = `https://api.m.jd.com/client.action`;
 message = ""
 !(async () => {
+  $.user_agent = require('./USER_AGENTS').USER_AGENT
   if (!cookiesArr[0]) {
     $.msg($.name, '【提示】请先获取cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/', {
       "open-url": "https://bean.m.jd.com/"
@@ -49,7 +49,7 @@ message = ""
   for (let i = 0; i < cookiesArr.length; i++) {
     //$.wait(50)
     if (process.env.JOYPARK_JOY_START && i == process.env.JOYPARK_JOY_START){
-      console.log(`\n汪汪乐园养joy 只运行 ${process.env.JD_CFD_LHJ ? process.env.JD_CFD_LHJ : 1} 个Cookie\n`);
+      console.log(`\n汪汪乐园养joy 只运行 ${process.env.JOYPARK_JOY_START} 个Cookie\n`);
       break
     }
 
@@ -308,7 +308,7 @@ function taskPostClientActionUrl(body,functionId) {
     url: `https://api.m.jd.com/client.action?${functionId?`functionId=${functionId}`:``}`,
     body: body,
     headers: {
-      'User-Agent':'jdltapp;iPhone;3.5.6;14.6;eac3e15e91fd380664fc7c788e8ab6a07805646d;network/4g;ADID/8F6CAEEA-5BF7-4F7E-86C3-A641C19CA832;hasUPPay/0;pushNoticeIsOpen/0;lang/zh_CN;model/iPhone13,2;addressid/1995295948;hasOCPay/0;appBuild/1070;supportBestPay/0;pv/41.26;apprpd/;ref/JDLTSubMainPageViewController;psq/2;ads/;psn/eac3e15e91fd380664fc7c788e8ab6a07805646d|112;jdv/0|kong|t_1500509960_|jingfen|bb9c79e4c4174521873879a27a707da4|1625071927291|1625071930;adk/;app_device/IOS;pap/JA2020_3112531|3.5.6|IOS 14.6;Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1',
+      'User-Agent': $.user_agent,
       'Content-Type':'application/x-www-form-urlencoded',
       'Host':'api.m.jd.com',
       'Origin':'https://joypark.jd.com',
@@ -323,7 +323,7 @@ function taskGetClientActionUrl(body,functionId) {
     url: `https://api.m.jd.com/client.action?functionId=${functionId}${body ? `&${body}` : ``}`,
     // body: body,
     headers: {
-      'User-Agent':'jdltapp;iPhone;3.5.6;14.6;eac3e15e91fd380664fc7c788e8ab6a07805646d;network/4g;ADID/8F6CAEEA-5BF7-4F7E-86C3-A641C19CA832;hasUPPay/0;pushNoticeIsOpen/0;lang/zh_CN;model/iPhone13,2;addressid/1995295948;hasOCPay/0;appBuild/1070;supportBestPay/0;pv/41.26;apprpd/;ref/JDLTSubMainPageViewController;psq/2;ads/;psn/eac3e15e91fd380664fc7c788e8ab6a07805646d|112;jdv/0|kong|t_1500509960_|jingfen|bb9c79e4c4174521873879a27a707da4|1625071927291|1625071930;adk/;app_device/IOS;pap/JA2020_3112531|3.5.6|IOS 14.6;Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1',
+      'User-Agent': $.user_agent,
       'Content-Type':'application/x-www-form-urlencoded',
       'Host':'api.m.jd.com',
       'Origin':'https://joypark.jd.com',
