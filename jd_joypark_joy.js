@@ -78,7 +78,9 @@ message = ""
 
       //从低合到高
       await doJoyMergeAll($.activityJoyList)
-      //购买合成
+
+
+      await getJoyList(true)
 
 
 
@@ -209,8 +211,6 @@ async function doJoyMoveUpAll(activityJoyList, workJoyInfoList) {
       await doJoyMoveUpAll($.activityJoyList,$.workJoyInfoList)
     }
   }
-
-  await getJoyList(true)
 }
 
 async function doJoyMoveDownAll(workJoyInfoList) {
