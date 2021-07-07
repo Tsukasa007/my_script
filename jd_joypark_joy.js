@@ -3,10 +3,21 @@ ENV
 JOYPARK_JOY_START = 2     只做前几个CK
 
 更新地址：https://github.com/Tsukasa007/my_script
+
 ============Quantumultx===============
 [task_local]
 #汪汪乐园养joy
-0 0 9 * * * https://raw.githubusercontent.com/Tsukasa007/my_script/master/jd_joypark_joy.js, tag=汪汪乐园养joy, img-url=https://x.png, enabled=true
+40 0-23/3 * * * jd_joypark_joy.js, tag=汪汪乐园养joy, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_joypark_joy.png, enabled=true
+
+================Loon==============
+[Script]
+cron "40 0-23/3 * * *" script-path=jd_joypark_joy.js,tag=汪汪乐园养joy
+
+===============Surge=================
+汪汪乐园养joy = type=cron,cronexp="40 0-23/3 * * *",wake-system=1,timeout=3600,script-path=jd_joypark_joy.js
+
+============小火箭=========
+汪汪乐园养joy = type=cron,script-path=jd_joypark_joy.js, cronexpr="40 0-23/3 * * *", timeout=3600, enable=true
 */
 const $ = new Env('汪汪乐园养joy');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
@@ -199,7 +210,7 @@ async function doJoyMergeAll(activityJoyList) {
 
   if (joyMinLevelArr.length >= 2) {
     $.log(`开始合成 ${minLevel} ${joyMinLevelArr[0].id} <=> ${joyMinLevelArr[1].id}`);
-    $.log(`限流严重，5秒后合成！`)
+    $.log(`限流严重，5秒后合成！如失败会重试！`)
     await $.wait(5000)
     await doJoyMerge(joyMinLevelArr[0].id, joyMinLevelArr[1].id);
     await getJoyList()

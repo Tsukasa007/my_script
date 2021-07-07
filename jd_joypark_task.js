@@ -6,7 +6,17 @@
 ============Quantumultx===============
 [task_local]
 #汪汪乐园每日任务
-0 0 9 * * * https://x.js, tag=汪汪乐园每日任务, img-url=https://x.png, enabled=true
+20 9 * * * jd_joypark_task.js, tag=汪汪乐园每日任务, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_joypark_task.png, enabled=true
+
+================Loon==============
+[Script]
+cron "20 9 * * *" script-path=jd_joypark_task.js,tag=汪汪乐园每日任务
+
+===============Surge=================
+汪汪乐园每日任务 = type=cron,cronexp="20 9 * * *",wake-system=1,timeout=3600,script-path=jd_joypark_task.js
+
+============小火箭=========
+汪汪乐园每日任务 = type=cron,script-path=jd_joypark_task.js, cronexpr="20 9 * * *", timeout=3600, enable=true
 */
 const $ = new Env('汪汪乐园每日任务');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';

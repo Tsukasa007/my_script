@@ -3,10 +3,21 @@
 从CK1 开始开工位 1开满了开2 如此类推
 
 更新地址：https://github.com/Tsukasa007/my_script
+
 ============Quantumultx===============
 [task_local]
 #汪汪乐园开工位
-0 0 9 * * * https://x.js, tag=汪汪乐园开工位, img-url=https://x.png, enabled=true
+20 9 * * * jd_joypark_open.js, tag=汪汪乐园开工位, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_joypark_open.png, enabled=true
+
+================Loon==============
+[Script]
+cron "20 9 * * *" script-path=jd_joypark_open.js,tag=汪汪乐园开工位
+
+===============Surge=================
+汪汪乐园开工位 = type=cron,cronexp="20 9 * * *",wake-system=1,timeout=3600,script-path=jd_joypark_open.js
+
+============小火箭=========
+汪汪乐园开工位 = type=cron,script-path=jd_joypark_open.js, cronexpr="20 9 * * *", timeout=3600, enable=true
 */
 const $ = new Env('汪汪乐园开工位');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
