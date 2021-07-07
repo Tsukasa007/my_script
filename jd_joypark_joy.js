@@ -202,6 +202,7 @@ async function doJoyMoveUpAll(activityJoyList, workJoyInfoList) {
         } else {
           newBuyCount = true
           $.hasJoyCoin = false
+          i++
         }
       }
     }
