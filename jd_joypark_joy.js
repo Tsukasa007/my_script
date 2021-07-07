@@ -2,6 +2,8 @@
 ENV
 JOYPARK_JOY_START = 2     只做前几个CK
 
+请确保新用户助力过开工位，否则开启游戏了就不算新用户，后面就不能助力开工位了！！！！！！！！！！
+
 更新地址：https://github.com/Tsukasa007/my_script
 
 ============Quantumultx===============
@@ -61,6 +63,9 @@ message = ""
       $.nickName = '';
       $.maxJoyCount = 10
       console.log(`\n\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
+
+      //下地后还有有钱买Joy并且买了Joy
+      $.hasJoyCoin = true
 
       await getJoyBaseInfo();
       $.activityJoyList = []
@@ -132,10 +137,8 @@ function getJoyList(printLog = false){
             }
             $.log(`===== 京东账号${$.index}】${$.nickName || $.UserName} joy 状态  end  =====\n`)
           }
-
           $.activityJoyList = data.data.activityJoyList
           $.workJoyInfoList = data.data.workJoyInfoList
-
         }
       } catch (e) {
         $.logErr(e, resp)
@@ -180,6 +183,33 @@ async function doJoyMoveUpAll(activityJoyList, workJoyInfoList) {
     await doJoyMoveUpAll($.activityJoyList, $.workJoyInfoList)
   }
   $.log(`下地完成了！`)
+  if (workJoyInfoUnlockList.length !== 0 && $.hasJoyCoin) {
+    $.log(`竟然还有工位挖土？开启瞎买瞎下地模式！`);
+    let joyBaseInfo = await getJoyBaseInfo()
+    let joyCoin = joyBaseInfo.joyCoin
+    $.log(`还有${joyCoin}金币,看看还能买啥下地`)
+    let shopList = await getGameShopList()
+    let newBuyCount = false;
+    for (let i = shopList.length - 1;i >= 0;i--){
+      if (joyCoin > shopList[i].consume) {
+        $.log(`买一只 ${shopList[i].userLevel}级的！`);
+        joyCoin = joyCoin - shopList[i].consume;
+        let buyResp = await doJoyBuy(shopList[i].userLevel);
+        if (!buyResp.success) {
+          break;
+        } else {
+          newBuyCount = true
+          $.hasJoyCoin = false
+        }
+      }
+    }
+    $.hasJoyCoin = false
+    if (newBuyCount) {
+      await getJoyBaseInfo();
+      await doJoyMoveUpAll($.activityJoyList,$.workJoyInfoList)
+    }
+  }
+
   await getJoyList(true)
 }
 
@@ -205,13 +235,8 @@ async function doJoyMergeAll(activityJoyList) {
     return o.level
   }))
   let joyMinLevelArr = activityJoyList.filter(row => row.level === minLevel);
-
-  let gameShopList = await getGameShopList()
   let joyBaseInfo = await getJoyBaseInfo()
   let fastBuyLevel = joyBaseInfo.fastBuyLevel
-  let fastBuyCoin = joyBaseInfo.fastBuyCoin
-  let joyCoin = joyBaseInfo.joyCoin
-
   if (joyMinLevelArr.length >= 2) {
     $.log(`开始合成 ${minLevel} ${joyMinLevelArr[0].id} <=> ${joyMinLevelArr[1].id}`);
     $.log(`限流严重，5秒后合成！如失败会重试！`)
