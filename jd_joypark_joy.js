@@ -208,8 +208,9 @@ async function doJoyMoveUpAll(activityJoyList, workJoyInfoList) {
     }
     $.hasJoyCoin = false
     if (newBuyCount) {
-      await getJoyBaseInfo();
+      await getJoyList()
       await doJoyMoveUpAll($.activityJoyList,$.workJoyInfoList)
+      await getJoyBaseInfo();
     }
   }
 }
