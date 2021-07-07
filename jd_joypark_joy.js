@@ -201,6 +201,8 @@ async function doJoyMergeAll(activityJoyList) {
 
   if (joyMinLevelArr.length >= 2) {
     $.log(`开始合成 ${minLevel} ${joyMinLevelArr[0].id} <=> ${joyMinLevelArr[1].id}`);
+    $.log(`限流严重，4秒后合成！`)
+    await $.wait(4000)
     await doJoyMerge(joyMinLevelArr[0].id, joyMinLevelArr[1].id);
     await getJoyList()
     await doJoyMergeAll($.activityJoyList)
