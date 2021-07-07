@@ -9,17 +9,17 @@ JOYPARK_JOY_START = 2     只做前几个CK
 ============Quantumultx===============
 [task_local]
 #汪汪乐园养joy
-40 0-23/3 * * * jd_joypark_joy.js, tag=汪汪乐园养joy, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_joypark_joy.png, enabled=true
+20 0-23/3 * * * jd_joypark_joy.js, tag=汪汪乐园养joy, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_joypark_joy.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "40 0-23/3 * * *" script-path=jd_joypark_joy.js,tag=汪汪乐园养joy
+cron "20 0-23/3 * * *" script-path=jd_joypark_joy.js,tag=汪汪乐园养joy
 
 ===============Surge=================
-汪汪乐园养joy = type=cron,cronexp="40 0-23/3 * * *",wake-system=1,timeout=3600,script-path=jd_joypark_joy.js
+汪汪乐园养joy = type=cron,cronexp="20 0-23/3 * * *",wake-system=1,timeout=3600,script-path=jd_joypark_joy.js
 
 ============小火箭=========
-汪汪乐园养joy = type=cron,script-path=jd_joypark_joy.js, cronexpr="40 0-23/3 * * *", timeout=3600, enable=true
+汪汪乐园养joy = type=cron,script-path=jd_joypark_joy.js, cronexpr="20 0-23/3 * * *", timeout=3600, enable=true
 */
 const $ = new Env('汪汪乐园养joy');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
