@@ -135,54 +135,46 @@ message = ""
   }
 
   $.log("\n\n内部汪汪乐园互助")
-  try {
-    for (let i = 0; i < cookiesArr.length; i++) {
-      cookie = cookiesArr[i];
-      if (cookie) {
-        $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
-        $.index = i + 1;
-        $.isLogin = true;
-        $.nickName = '';
-        console.log(`\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
-        if (!$.isLogin) {
-          $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, {
-            "open-url": "https://bean.m.jd.com/bean/signIndex.action"
-          });
-          if ($.isNode()) {
-            await notify.sendNotify(`${$.name}cookie已失效 - ${$.UserName}`, `京东账号${$.index} ${$.UserName}\n请重新登录获取cookie`);
-          }
-          continue
+  for (let i = 0; i < cookiesArr.length; i++) {
+    cookie = cookiesArr[i];
+    if (cookie) {
+      $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
+      $.index = i + 1;
+      $.isLogin = true;
+      $.nickName = '';
+      console.log(`\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
+      if (!$.isLogin) {
+        $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, {
+          "open-url": "https://bean.m.jd.com/bean/signIndex.action"
+        });
+        if ($.isNode()) {
+          await notify.sendNotify(`${$.name}cookie已失效 - ${$.UserName}`, `京东账号${$.index} ${$.UserName}\n请重新登录获取cookie`);
         }
-        for (const invitePinTaskListKey of $.invitePinTaskList) {
-          $.log(`【京东账号${$.index}】${$.nickName || $.UserName} 助力 ${invitePinTaskListKey}`)
-          let resp = await getJoyBaseInfo(167,1,invitePinTaskListKey);
-
-          if (resp.success) {
-            if (resp.data.helpState === 1) {
-              $.log("助力成功！");
-            } else if (resp.data.helpState === 0){
-              $.log("自己不能助力自己！");
-            } else if (resp.data.helpState === 2){
-              $.log("助力过了！");
-            } else if (resp.data.helpState === 3){
-              $.log("没有助力次数了！");
-              break
-            }else if (resp.data.helpState === 4){
-              $.log("这个B助力满了！");
-            }
-          }else {
-            $.log("数据异常 助力失败！\n\n")
+        continue
+      }
+      for (const invitePinTaskListKey of $.invitePinTaskList) {
+        $.log(`【京东账号${$.index}】${$.nickName || $.UserName} 助力 ${invitePinTaskListKey}`)
+        let resp = await getJoyBaseInfo(167,1,invitePinTaskListKey);
+        if (resp.success) {
+          if (resp.data.helpState === 1) {
+            $.log("助力成功！");
+          } else if (resp.data.helpState === 0){
+            $.log("自己不能助力自己！");
+          } else if (resp.data.helpState === 2){
+            $.log("助力过了！");
+          } else if (resp.data.helpState === 3){
+            $.log("没有助力次数了！");
             break
+          }else if (resp.data.helpState === 4){
+            $.log("这个B助力满了！");
           }
+        }else {
+          $.log("数据异常 助力失败！\n\n")
+          break
         }
       }
     }
-  }catch (e){
-    $.log("XXXXXXXXXXX")
-    $.logErr(e)
   }
-
-
 })()
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
