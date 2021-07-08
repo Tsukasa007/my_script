@@ -1,8 +1,26 @@
 /*
-什么值得买自动签到任务
-env -> SMZDM_COOKIE 什么值得买Cookie
- */
+ENV
+SMZDM_COOKIE 什么值得买Cookie
 
+什么值得买自动签到任务
+
+更新地址：https://github.com/Tsukasa007/my_script
+
+============Quantumultx===============
+[task_local]
+#什么值得买自动签到
+0 43 1/8 * * ? smzdm_mission.js, tag=什么值得买自动签到, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/smzdm_mission.png, enabled=true
+
+================Loon==============
+[Script]
+cron "0 43 1/8 * * ?" script-path=smzdm_mission.js,tag=什么值得买自动签到
+
+===============Surge=================
+什么值得买自动签到 = type=cron,cronexp="0 43 1/8 * * ?",wake-system=1,timeout=3600,script-path=smzdm_mission.js
+
+============小火箭=========
+什么值得买自动签到 = type=cron,script-path=smzdm_mission.js, cronexpr="0 43 1/8 * * ?", timeout=3600, enable=true
+*/
 const smzdmCookieKey = "smzdm_cookie";
 const scriptName = "什么值得买";
 let clickGoBuyMaxTimes = 12; // 好价点击去购买的次数
@@ -11,7 +29,7 @@ let clickLikeArticleMaxTimes = 7; // 好文点赞次数
 let clickFavArticleMaxTimes = 7; // 好文收藏次数
 
 let magicJS = MagicJS(scriptName, "INFO");
-const $ = new Env(scriptName);
+const $ = new Env("什么值得买自动签到");
 magicJS.unifiedPushUrl = magicJS.read("smzdm_unified_push_url") || magicJS.read("magicjs_unified_push_url");
 const notify = $.isNode() ? require('./sendNotify') : '';
 let result = []
