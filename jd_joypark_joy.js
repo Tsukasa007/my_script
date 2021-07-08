@@ -180,7 +180,6 @@ async function doJoyMoveUpAll(activityJoyList, workJoyInfoList) {
   }else if ($.JOY_COIN_MAXIMIZE) {
     await joyCoinMaximize(workJoyInfoUnlockList)
   }
-  $.log(`下地完成了！`);
 
 }
 
@@ -278,6 +277,9 @@ function doJoyMove(joyId,location){
           console.log(`${JSON.stringify(err)}`)
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
+          if (location !== 0) {
+            $.log(`下地完成了！`);
+          }
           data = JSON.parse(data);
         }
       } catch (e) {
