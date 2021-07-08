@@ -114,7 +114,6 @@ message = ""
 
             if (resp.code === 2005 || resp.code === 0) {
               $.log(`${task.taskTitle} 任务完成！`)
-              break
             }else{
               $.log(`${resp.echo} 任务失败！`)
             }
