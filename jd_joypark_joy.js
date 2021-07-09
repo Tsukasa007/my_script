@@ -70,7 +70,7 @@ message = ""
 
       //下地后还有有钱买Joy并且买了Joy
       $.hasJoyCoin = true
-      await getJoyBaseInfo();
+      await getJoyBaseInfo(undefined,undefined,undefined,true);
       $.activityJoyList = []
       $.workJoyInfoList = []
       await getJoyList(true);
@@ -87,7 +87,7 @@ message = ""
     .finally(() => $.done())
 
 
-function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
+function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '',printLog = false) {
   //await $.wait(20)
   return new Promise(resolve => {
     $.post(taskPostClientActionUrl(`body={"taskId":"${taskId}","inviteType":"${inviteType}","inviterPin":"${inviterPin}","linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&_t=1625480372020&appid=activities_platform`,`joyBaseInfo`), async (err, resp, data) => {
@@ -97,7 +97,9 @@ function getJoyBaseInfo(taskId = '',inviteType = '',inviterPin = '') {
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           data = JSON.parse(data);
-          $.log(`等级: ${data.data.level}|金币: ${data.data.joyCoin}`)
+          if (printLog) {
+            $.log(`等级: ${data.data.level}|金币: ${data.data.joyCoin}`);
+          }
           $.joyBaseInfo = data.data
         }
       } catch (e) {
