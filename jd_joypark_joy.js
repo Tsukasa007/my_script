@@ -367,7 +367,7 @@ function doJoyRecovery(joyId) {
       } catch (e) {
         $.logErr(e, resp)
       } finally {
-        resolve(data.data);
+        resolve(data);
       }
     })
   })
