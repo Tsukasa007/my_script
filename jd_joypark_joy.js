@@ -239,8 +239,8 @@ async function doJoyMergeAll(activityJoyList) {
   let joyBaseInfo = await getJoyBaseInfo()
   let fastBuyLevel = joyBaseInfo.fastBuyLevel
   if (joyMinLevelArr.length >= 2) {
-    $.log(`开始合成 ${minLevel} ${joyMinLevelArr[0].id} <=> ${joyMinLevelArr[1].id} 【限流严重，5秒后合成！如失败会重试`);
-    await $.wait(5000)
+    $.log(`开始合成 ${minLevel} ${joyMinLevelArr[0].id} <=> ${joyMinLevelArr[1].id} 【限流严重，2秒后合成！如失败会重试】`);
+    await $.wait(2000)
     await doJoyMerge(joyMinLevelArr[0].id, joyMinLevelArr[1].id);
     await getJoyList()
     await doJoyMergeAll($.activityJoyList)
@@ -293,7 +293,7 @@ function doJoyMove(joyId,location){
 async function doJoyMerge(joyId1,joyId2){
   //await $.wait(20)
   return new Promise(resolve => {
-    $.post(taskGetClientActionUrl(`body={"joyOneId":${joyId1},"joyTwoId":${joyId2},"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`joyMerge`), async (err, resp, data) => {
+    $.get(taskGetClientActionUrl(`body={"joyOneId":${joyId1},"joyTwoId":${joyId2},"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`joyMergeGet`), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -356,7 +356,7 @@ function taskGetClientActionUrl(body,functionId) {
       'Content-Type':'application/x-www-form-urlencoded',
       'Host':'api.m.jd.com',
       'Origin':'https://joypark.jd.com',
-      'Referer':'https://joypark.jd.com/?activityId=LsQNxL7iWDlXUs6cFl-AAg&lng=113.387899&lat=22.512678&sid=4d76080a9da10fbb31f5cd43396ed6cw&un_area=19_1657_52093_0',
+      'Referer':'https://joypark.jd.com/?activityId=LsQNxL7iWDlXUs6cFl-AAg&lng=113.388006&lat=22.512549&sid=4d76080a9da10fbb31f5cd43396ed6cw&un_area=19_1657_52093_0',
       'Cookie': cookie,
     }
   }
