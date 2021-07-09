@@ -6,17 +6,17 @@
 ============Quantumultx===============
 [task_local]
 #X
-20 9 * * * X.js, tag=X, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/X.png, enabled=true
+3 0/1 * * * X.js, tag=X, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/X.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "20 9 * * *" script-path=X.js,tag=X
+cron "3 0/1 * * *" script-path=X.js,tag=X
 
 ===============Surge=================
-X = type=cron,cronexp="20 9 * * *",wake-system=1,timeout=3600,script-path=X.js
+X = type=cron,cronexp="3 0/1 * * *",wake-system=1,timeout=3600,script-path=X.js
 
 ============小火箭=========
-X = type=cron,script-path=X.js, cronexpr="20 9 * * *", timeout=3600, enable=true
+X = type=cron,script-path=X.js, cronexpr="3 0/1 * * *", timeout=3600, enable=true
 */
 const $ = new Env('X');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
