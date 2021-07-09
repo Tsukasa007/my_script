@@ -177,9 +177,10 @@ async function doJoyMoveUpAll(activityJoyList, workJoyInfoList) {
     await doJoyMove(maxLevelJoyList[0].id, workJoyInfoUnlockList[0].location)
     await getJoyList()
     await doJoyMoveUpAll($.activityJoyList, $.workJoyInfoList)
-  }else if ($.JOY_COIN_MAXIMIZE) {
-    await joyCoinMaximize(workJoyInfoUnlockList)
   }
+  // else if ($.JOY_COIN_MAXIMIZE) {
+  //   await joyCoinMaximize(workJoyInfoUnlockList)
+  // }
 
 }
 
@@ -330,10 +331,7 @@ async function doJoyBuy(level,activityJoyList){
               if (activityJoyList) {//正常买模式
                 $.log(`因为购买 ${level}级🐶 没空位 所以我要删掉比低级的狗了`);
                 let minLevel = Math.min.apply(Math, activityJoyList.map(o => o.level))
-                let joyRecoveryFlag = await doJoyRecovery(activityJoyList.filter(row => row.level === minLevel)[0].id);
-                if (joyRecoveryFlag.success) {
-                  data = await doJoyBuy(level)
-                }
+                await doJoyRecovery(activityJoyList.filter(row => row.level === minLevel)[0].id);
               }
               break
             case 0:
