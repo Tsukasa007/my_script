@@ -354,7 +354,7 @@ async function doJoyBuy(level,activityJoyList){
 
 function doJoyRecovery(joyId) {
   return new Promise(resolve => {
-    $.post(taskPostClientActionUrl(`body={"joyId":${joyId}},"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`joyRecovery`), async (err, resp, data) => {
+    $.post(taskPostClientActionUrl(`body={"joyId":${joyId},"linkId":"LsQNxL7iWDlXUs6cFl-AAg"}&appid=activities_platform`,`joyRecovery`), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
