@@ -9,17 +9,17 @@ SMZDM_COOKIE 什么值得买Cookie
 ============Quantumultx===============
 [task_local]
 #什么值得买自动签到
-0 43 1/8 * * ? smzdm_mission.js, tag=什么值得买自动签到, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/smzdm_mission.png, enabled=true
+43 1/8 * * * smzdm_mission.js, tag=什么值得买自动签到, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/smzdm_mission.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "0 43 1/8 * * ?" script-path=smzdm_mission.js,tag=什么值得买自动签到
+cron "43 1/8 * * *" script-path=smzdm_mission.js,tag=什么值得买自动签到
 
 ===============Surge=================
-什么值得买自动签到 = type=cron,cronexp="0 43 1/8 * * ?",wake-system=1,timeout=3600,script-path=smzdm_mission.js
+什么值得买自动签到 = type=cron,cronexp="43 1/8 * * *",wake-system=1,timeout=3600,script-path=smzdm_mission.js
 
 ============小火箭=========
-什么值得买自动签到 = type=cron,script-path=smzdm_mission.js, cronexpr="0 43 1/8 * * ?", timeout=3600, enable=true
+什么值得买自动签到 = type=cron,script-path=smzdm_mission.js, cronexpr="43 1/8 * * *", timeout=3600, enable=true
 */
 const smzdmCookieKey = "smzdm_cookie";
 const scriptName = "什么值得买";
