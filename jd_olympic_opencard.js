@@ -110,7 +110,6 @@ message = ""
       await openCardStartDraw(2)
       await getActorUuid()
       await checkOpenCard();
-      $.log($.shareUuid)
       if (i === 0 && $.actorUuid) {
         $.shareUuid = $.actorUuid;
       }
