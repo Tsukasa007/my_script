@@ -3,6 +3,7 @@
 env OLYMPIC_START_DRAW = true 就是开启ck1抽奖 (!!!抽奖时间可能很长，慢慢抽吧!!!)
 一起奔跑 为奥运加油!!! 第一个账号助力我 其他依次助力CK1
 第一个CK失效应该全都会助力我，亲注意一下
+入口复制到jd：
 26.0复制整段话 Https:/JljqXwTTAJ9r7A 一起奔跑 为奥运加油 分千万京豆万元大奖#J4EIQ3zFEa@☆しāī京岽逛逛☆
 
 更新地址：https://github.com/Tsukasa007/my_script
