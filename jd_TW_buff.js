@@ -1,5 +1,11 @@
 /*
 7.28-7.31 特物-拉满BUFF 漂亮上场 第一个账号助力我 其他依次助力CK1
+没有几百个CK就不要跑了!!!!!
+没有几百个CK就不要跑了!!!!!
+没有几百个CK就不要跑了!!!!!
+没有几百个CK就不要跑了!!!!!
+没有几百个CK就不要跑了!!!!!
+没有几百个CK就不要跑了!!!!!
 第一个CK失效应该全都会助力我，亲注意一下
 入口复制到jd：
 24.0复制整段话 http://JujEXrPAtp81KK快来为我拉BUFF，助我赢大奖#R4burF7MFa@--》亰#栋A/PP
@@ -8,17 +14,17 @@
 ============Quantumultx===============
 [task_local]
 #7.28-7.31 特物-拉满BUFF 漂亮上场
-50 0,6,10 * * * jd_TW_buff.js, tag=7.28-7.31 特物-拉满BUFF 漂亮上场, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_TW_buff.png, enabled=true
+50 20 * * * jd_TW_buff.js, tag=7.28-7.31 特物-拉满BUFF 漂亮上场, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_TW_buff.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "50 0,6,10 * * *" script-path=jd_TW_buff.js,tag=7.28-7.31 特物-拉满BUFF 漂亮上场
+cron "50 20 * * *" script-path=jd_TW_buff.js,tag=7.28-7.31 特物-拉满BUFF 漂亮上场
 
 ===============Surge=================
-7.28-7.31 特物-拉满BUFF 漂亮上场 = type=cron,cronexp="50 0,6,10 * * *",wake-system=1,timeout=3600,script-path=jd_TW_buff.js
+7.28-7.31 特物-拉满BUFF 漂亮上场 = type=cron,cronexp="50 20 * * *",wake-system=1,timeout=3600,script-path=jd_TW_buff.js
 
 ============小火箭=========
-7.28-7.31 特物-拉满BUFF 漂亮上场 = type=cron,script-path=jd_TW_buff.js, cronexpr="50 0,6,10 * * *", timeout=3600, enable=true
+7.28-7.31 特物-拉满BUFF 漂亮上场 = type=cron,script-path=jd_TW_buff.js, cronexpr="50 20 * * *", timeout=3600, enable=true
 */
 const $ = new Env('7.28-7.31 特物-拉满BUFF 漂亮上场');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
