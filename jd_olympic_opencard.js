@@ -73,6 +73,7 @@ message = ""
       $.LZ_TOKEN_KEY = wxCommonInfoTokenData.LZ_TOKEN_KEY
       $.LZ_TOKEN_VALUE = wxCommonInfoTokenData.LZ_TOKEN_VALUE
       $.isvObfuscatorToken = await getIsvObfuscatorToken();
+      await $.wait(1000)
       $.myPingData = await getMyPing()
       if ($.myPingData ==="" || $.myPingData === '400001' || !$.myPingData || !$.myPingData.secretPin) {
         $.log("黑号!")
