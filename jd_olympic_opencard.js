@@ -25,7 +25,6 @@ cron "50 0,6,10 * * *" script-path=jd_olympic_opencard.js,tag=7.26-8.8 全民奔
 const $ = new Env('7.26-8.8 全民奔跑 激扬奥运');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let UA = require('./USER_AGENTS.js').USER_AGENT;
-process.env.OLYMPIC_START_DRAW = 'true'
 const notify = $.isNode() ? require('./sendNotify') : '';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [],
