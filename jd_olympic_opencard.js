@@ -25,7 +25,7 @@ cron "50 0,6,10 * * *" script-path=jd_olympic_opencard.js,tag=7.26-8.8 全民奔
 const $ = new Env('7.26-8.8 全民奔跑 激扬奥运');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let UA = require('./USER_AGENTS.js').USER_AGENT;
-
+process.env.OLYMPIC_START_DRAW = 'true'
 const notify = $.isNode() ? require('./sendNotify') : '';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [],
@@ -74,8 +74,9 @@ message = ""
       $.LZ_TOKEN_VALUE = wxCommonInfoTokenData.LZ_TOKEN_VALUE
       $.isvObfuscatorToken = await getIsvObfuscatorToken();
       $.myPingData = await getMyPing()
-      if ($.myPingData ==="" || $.myPingData === '400001') {
-        $.log("error!")
+      if ($.myPingData ==="" || $.myPingData === '400001' || !$.myPingData || !$.myPingData.secretPin) {
+        $.log("黑号!")
+        await $.wait(5000)
         continue
       }
       await getHtml();
@@ -105,9 +106,9 @@ message = ""
       await saveTask();
       while (checkOpenCardData.nowScore >= 50 && OLYMPIC_START_DRAW_FLAG) {
         $.log('nowScore: ' + checkOpenCardData.nowScore)
-        await $.wait(2000)
+        await $.wait(3000)
         await startDraw();
-        await $.wait(2000)
+        await $.wait(3000)
         checkOpenCardData = await checkOpenCard();
       }
       await getDrawRecordHasCoupon()
@@ -164,7 +165,7 @@ function getDrawRecordHasCoupon() {
   })
 }
 
-function startDraw() {
+async function startDraw() {
   return new Promise(resolve => {
     let body = `pin=${encodeURIComponent($.myPingData.secretPin)}&activityId=dz210768869311&actorUuid=${$.actorUuid}&shareUuid=${$.shareUuid}&change=3`
     $.post(taskPostUrl('/dingzhi/aoyun/moreshop/startDraw', body), async (err, resp, data) => {
@@ -175,9 +176,10 @@ function startDraw() {
           $.log('抽到了： ' + JSON.parse(data).data.name)
         }
       } catch (e) {
+        await $.wait(5000)
         $.logErr(e, resp)
       } finally {
-        resolve(data.data);
+        resolve(data);
       }
     })
   })
@@ -232,6 +234,7 @@ function checkOpenCard() {
           data = JSON.parse(data);
         }
       } catch (e) {
+        data = {data:{nowScore:50}}
         $.logErr(e, resp)
       } finally {
         resolve(data.data);

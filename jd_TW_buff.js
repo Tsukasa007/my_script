@@ -85,6 +85,7 @@ message = ""
       let simpleActInfoVo = await getSimpleActInfoVo();
       if (!simpleActInfoVo.data) {
         $.log("黑号!")
+        await $.wait(5000)
         continue
       }
       await adLog();
