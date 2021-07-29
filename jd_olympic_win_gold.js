@@ -4,11 +4,11 @@
 一天只能领200豆1个ck20豆  不设置变量默认只会运行到ck11
 一天只能领200豆1个ck20豆  不设置变量默认只会运行到ck11
 一天只能领200豆1个ck20豆  不设置变量默认只会运行到ck11
-请设置env变量 JD_OLYMPIC_WIN_GOLD    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 一天最多助力10个ck 推荐11的倍数填写！！
-请设置env变量 JD_OLYMPIC_WIN_GOLD    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 一天最多助力10个ck 推荐11的倍数填写！！
-请设置env变量 JD_OLYMPIC_WIN_GOLD    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 一天最多助力10个ck 推荐11的倍数填写！！
-请设置env变量 JD_OLYMPIC_WIN_GOLD    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 一天最多助力10个ck 推荐11的倍数填写！！
-请设置env变量 JD_OLYMPIC_WIN_GOLD    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 一天最多助力10个ck 推荐11的倍数填写！！
+请设置env变量 JD_OLYMPIC_WIN_GOLD    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 一天最多助力10个ck 推荐11的倍数填写！！每天改一次收益最大化
+请设置env变量 JD_OLYMPIC_WIN_GOLD    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 一天最多助力10个ck 推荐11的倍数填写！！每天改一次收益最大化
+请设置env变量 JD_OLYMPIC_WIN_GOLD    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 一天最多助力10个ck 推荐11的倍数填写！！每天改一次收益最大化
+请设置env变量 JD_OLYMPIC_WIN_GOLD    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 一天最多助力10个ck 推荐11的倍数填写！！每天改一次收益最大化
+请设置env变量 JD_OLYMPIC_WIN_GOLD    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 一天最多助力10个ck 推荐11的倍数填写！！每天改一次收益最大化
 
 第一个账号助力我 其他依次助力CK1
 第一个CK失效应该全都会助力我，亲注意一下
@@ -128,7 +128,7 @@ if (!process.env.JD_OLYMPIC_WIN_GOLD) {
         $.shareUuid = $.actorUuid;
       }
       if ($.index === JD_OLYMPIC_WIN_GOLD) {
-        $.log(`你设置到${JD_OLYMPIC_WIN_GOLD} 停止，如果不如意请设置 JD_OLYMPIC_WIN_GOLD变量，注意看js说明！！！`)
+        $.log(`你设置到${JD_OLYMPIC_WIN_GOLD} 停止，如果不如意请设置 JD_OLYMPIC_WIN_GOLD变量，注意看js说明！！！没有设置默认11停`)
         break;
       }
     }
