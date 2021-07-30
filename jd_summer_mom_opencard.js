@@ -223,8 +223,7 @@ async function startDraw(type) {
         if (err) {
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
-          $
-          $.log('抽到了： ' + JSON.parse(data))
+          $.log('抽到了： ' + data)
         }
       } catch (e) {
         await $.wait(5000)
