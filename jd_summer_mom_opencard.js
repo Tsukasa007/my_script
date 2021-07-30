@@ -427,15 +427,7 @@ function adLog() {
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           //  data = JSON.parse(data);
-          if ($.isNode())
-            for (let ck of resp['headers']['set-cookie']) {
-              cookie = `${cookie}; ${ck.split(";")[0]};`
-            }
-          else {
-            for (let ck of resp['headers']['Set-Cookie'].split(',')) {
-              cookie = `${cookie}; ${ck.split(";")[0]};`
-            }
-          }
+
         }
       } catch (e) {
         $.logErr(e, resp)
