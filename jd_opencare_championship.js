@@ -1,14 +1,14 @@
 /*
-一天只能领400豆1个ck20豆  不设置变量默认只会运行到ck22
-一天只能领400豆1个ck20豆  不设置变量默认只会运行到ck22
-一天只能领400豆1个ck20豆  不设置变量默认只会运行到ck22
-一天只能领400豆1个ck20豆  不设置变量默认只会运行到ck22
-一天只能领400豆1个ck20豆  不设置变量默认只会运行到ck22
-请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
-请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
-请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
-请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
-请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
+一天只能领400豆1个ck20豆  不设置变量默认只会运行到ck21
+一天只能领400豆1个ck20豆  不设置变量默认只会运行到ck21
+一天只能领400豆1个ck20豆  不设置变量默认只会运行到ck21
+一天只能领400豆1个ck20豆  不设置变量默认只会运行到ck21
+一天只能领400豆1个ck20豆  不设置变量默认只会运行到ck21
+请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
+请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
+请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
+请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
+请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
 
 第一个账号助力我 其他依次助力CK1
 第一个CK失效应该全都会助力我，亲注意一下
@@ -51,11 +51,11 @@ if ($.isNode()) {
 let JD_OPENCARE_CHAMPIONSHIP
 if (!process.env.JD_OPENCARE_CHAMPIONSHIP) {
   $.log(`你没有设置JD_SUMMER_MOM_OPENCARD变量 默认为运行到11ck停止`)
-  $.log(`请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 一天最多助力20个ck 推荐11的倍数填写！！`)
-  $.log(`请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 一天最多助力20个ck 推荐11的倍数填写！！`)
-  $.log(`请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 一天最多助力20个ck 推荐11的倍数填写！！`)
-  $.log(`请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写22就是跑到22个ck就停止 一天最多助力20个ck 推荐11的倍数填写！！`)
-  JD_OPENCARE_CHAMPIONSHIP = 22
+  $.log(`请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 一天最多助力20个ck 推荐10的倍数 +1 填写！！`)
+  $.log(`请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 一天最多助力20个ck 推荐10的倍数 +1 填写！！`)
+  $.log(`请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 一天最多助力20个ck 推荐10的倍数 +1 填写！！`)
+  $.log(`请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 一天最多助力20个ck 推荐10的倍数 +1 填写！！`)
+  JD_OPENCARE_CHAMPIONSHIP = 21
 }else {
   JD_OPENCARE_CHAMPIONSHIP = Number(process.env.JD_OPENCARE_CHAMPIONSHIP)
   $.log(`你设置了JD_SUMMER_MOM_OPENCARD变量 运行到 ${JD_OPENCARE_CHAMPIONSHIP} ck停止`)
