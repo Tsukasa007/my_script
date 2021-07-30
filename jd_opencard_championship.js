@@ -4,11 +4,11 @@
 一天只能领400豆1个ck20豆  不设置变量默认只会运行到ck21
 一天只能领400豆1个ck20豆  不设置变量默认只会运行到ck21
 一天只能领400豆1个ck20豆  不设置变量默认只会运行到ck21
-请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
-请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
-请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
-请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
-请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
+请设置env变量 Jd_opencard_championship    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
+请设置env变量 Jd_opencard_championship    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
+请设置env变量 Jd_opencard_championship    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
+请设置env变量 Jd_opencard_championship    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
+请设置env变量 Jd_opencard_championship    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 如果没豆那就改变量，ck多每天改一次收益最大化
 
 第一个账号助力我 其他依次助力CK1
 第一个CK失效应该全都会助力我，亲注意一下
@@ -19,17 +19,17 @@
 ============Quantumultx===============
 [task_local]
 #7.28-8.6 定格夺冠
-50 0,10 * * * jd_opencare_championship.js, tag=7.28-8.6 定格夺冠, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_opencare_championship.png, enabled=true
+50 0,10 * * * jd_opencard_championship.js, tag=7.28-8.6 定格夺冠, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_opencare_championship.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "50 0,10 * * *" script-path=jd_opencare_championship.js,tag=7.28-8.6 定格夺冠
+cron "50 0,10 * * *" script-path=jd_opencard_championship.js,tag=7.28-8.6 定格夺冠
 
 ===============Surge=================
-7.28-8.6 定格夺冠 = type=cron,cronexp="50 0,10 * * *",wake-system=1,timeout=3600,script-path=jd_opencare_championship.js
+7.28-8.6 定格夺冠 = type=cron,cronexp="50 0,10 * * *",wake-system=1,timeout=3600,script-path=jd_opencard_championship.js
 
 ============小火箭=========
-7.28-8.6 定格夺冠 = type=cron,script-path=jd_opencare_championship.js, cronexpr="50 0,10 * * *", timeout=3600, enable=true
+7.28-8.6 定格夺冠 = type=cron,script-path=jd_opencard_championship.js, cronexpr="50 0,10 * * *", timeout=3600, enable=true
 */
 const $ = new Env('7.28-8.6 定格夺冠');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
@@ -48,17 +48,17 @@ if ($.isNode()) {
 }
 
 
-let JD_OPENCARE_CHAMPIONSHIP
+let Jd_opencard_championship
 if (!process.env.JD_OPENCARE_CHAMPIONSHIP) {
   $.log(`你没有设置JD_SUMMER_MOM_OPENCARD变量 默认为运行到11ck停止`)
   $.log(`请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 一天最多助力20个ck 推荐10的倍数 +1 填写！！`)
   $.log(`请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 一天最多助力20个ck 推荐10的倍数 +1 填写！！`)
   $.log(`请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 一天最多助力20个ck 推荐10的倍数 +1 填写！！`)
   $.log(`请设置env变量 JD_OPENCARE_CHAMPIONSHIP    填写11就是跑到11个ck就停止  填写21就是跑到21个ck就停止 一天最多助力20个ck 推荐10的倍数 +1 填写！！`)
-  JD_OPENCARE_CHAMPIONSHIP = 21
+  Jd_opencard_championship = 21
 }else {
-  JD_OPENCARE_CHAMPIONSHIP = Number(process.env.JD_OPENCARE_CHAMPIONSHIP)
-  $.log(`你设置了JD_SUMMER_MOM_OPENCARD变量 运行到 ${JD_OPENCARE_CHAMPIONSHIP} ck停止`)
+  Jd_opencard_championship = Number(process.env.JD_OPENCARE_CHAMPIONSHIP)
+  $.log(`你设置了JD_SUMMER_MOM_OPENCARD变量 运行到 ${Jd_opencard_championship} ck停止`)
 }
 
 !(async () => {
@@ -123,8 +123,8 @@ if (!process.env.JD_OPENCARE_CHAMPIONSHIP) {
       if (i === 0 && $.actorUuid) {
         $.shareUuid = $.actorUuid;
       }
-      if ($.index == JD_OPENCARE_CHAMPIONSHIP) {
-        $.log(`你设置到${JD_OPENCARE_CHAMPIONSHIP} 停止，如果不如意请设置 JD_SUMMER_MOM_OPENCARD变量，注意看js说明！！！没有设置默认11停`)
+      if ($.index == Jd_opencard_championship) {
+        $.log(`你设置到${Jd_opencard_championship} 停止，如果不如意请设置 JD_SUMMER_MOM_OPENCARD变量，注意看js说明！！！没有设置默认11停`)
         break;
       }
     }
