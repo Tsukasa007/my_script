@@ -127,7 +127,7 @@ if (!process.env.JD_OLYMPIC_WIN_GOLD) {
       if (i === 0 && $.actorUuid) {
         $.shareUuid = $.actorUuid;
       }
-      if ($.index === JD_OLYMPIC_WIN_GOLD) {
+      if ($.index == JD_OLYMPIC_WIN_GOLD) {
         $.log(`你设置到${JD_OLYMPIC_WIN_GOLD} 停止，如果不如意请设置 JD_OLYMPIC_WIN_GOLD变量，注意看js说明！！！没有设置默认11停`)
         break;
       }
