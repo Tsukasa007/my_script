@@ -110,7 +110,6 @@ if (!process.env.JD_OPENCARE_CHAMPIONSHIP) {
       if (!checkOpenCardData.allOpenCard) {
         for (let cardList1Element of checkOpenCardData.cardList1) {
           $.log('入会: ' + cardList1Element.name)
-          await $.wait(1000)
           await join(cardList1Element.value)
         }
       }else{
@@ -174,7 +173,7 @@ function openCardStartDraw(type) {
 function getDrawRecordHasCoupon() {
   return new Promise(resolve => {
     let body = `activityId=fb64cd8222a74c0f96557c2d97547e76&actorUuid=${$.actorUuid}&shareUuid=${$.shareUuid}&pin=${encodeURIComponent($.myPingData.secretPin)}`
-    $.post(taskPostUrl('/dingzhi/taskact/openCardcommon/getDrawRecordHasCoupon', body,'https://lzdz1-isv.isvjcloud.com/dingzhi/taskact/openCardcommon/getDrawRecordHasCoupon'), async (err, resp, data) => {
+    $.post(taskPostUrl('/dingzhi/taskact/openCardcommon/getRankList', body,'https://lzdz1-isv.isvjcloud.com/dingzhi/taskact/openCardcommon/getRankList'), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${$.name} API请求失败，请检查网路重试`)
@@ -239,6 +238,9 @@ function checkOpenCard() {
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           data = JSON.parse(data);
+          if (data && data.data) {
+            $.log("================== 你邀请了： " + data.data.score + " 个")
+          }
         }
       } catch (e) {
         data = {data:{nowScore:50}}
