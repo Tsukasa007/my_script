@@ -179,7 +179,6 @@ function getDrawRecordHasCoupon() {
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           data = JSON.parse(data)
-          $.log("================== 你邀请了： " + data.data.length + " 个")
         }
       } catch (e) {
         $.logErr(e, resp)

@@ -59,6 +59,7 @@ message = ""
       $.isLogin = true;
       $.nickName = '';
       console.log(`\n\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
+      let wxCommonInfoTokenDataTmp = await getWxCommonInfoToken();
       if (!$.isLogin) {
         $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, {
           "open-url": "https://bean.m.jd.com/bean/signIndex.action"
@@ -68,13 +69,13 @@ message = ""
         }
         continue
       }
-      let wxCommonInfoTokenData = await getWxCommonInfoToken();
+      let wxCommonInfoTokenData = wxCommonInfoTokenDataTmp.data;
       $.LZ_TOKEN_KEY = wxCommonInfoTokenData.LZ_TOKEN_KEY
       $.LZ_TOKEN_VALUE = wxCommonInfoTokenData.LZ_TOKEN_VALUE
       $.isvObfuscatorToken = await getIsvObfuscatorToken();
       await $.wait(500)
       $.myPingData = await getMyPing()
-      if ($.myPingData ==="" || $.myPingData === '400001' || !$.myPingData || !$.myPingData.secretPin) {
+      if (!wxCommonInfoTokenData || $.myPingData ==="" || $.myPingData === '400001' || !$.myPingData || !$.myPingData.secretPin) {
         $.log("黑号!")
         await $.wait(2000)
         continue
@@ -100,7 +101,6 @@ message = ""
         $.log("checkOpenCardData: " + checkOpenCardData.allOpenCard)
       }
       //关注
-      await followShop();
       await followShop();
       await saveTask();
       await saveTask();
@@ -306,13 +306,15 @@ function getWxCommonInfoToken () {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
           console.log(`${$.name} API请求失败，请检查网路重试`)
+          $.isLogin = false
         } else {
           data = JSON.parse(data);
         }
       } catch (e) {
+        $.isLogin = false
         $.logErr(e, resp)
       } finally {
-        resolve(data.data);
+        resolve(data);
       }
     })
   })
