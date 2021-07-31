@@ -10,20 +10,20 @@ env OPENCARD_OLYMPIC_RUN = true 就是开启ck1抽奖 (!!!抽奖时间可能很�
 ============Quantumultx===============
 [task_local]
 #7.31-8.10 全民奥运 激情奔跑
-50 0,6,10 * * * jd_opencard_olympic_run.js, tag=7.31-8.10 全民奥运 激情奔跑, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_opencard_olympic_run.png, enabled=true
+1 0,6,10 * * * jd_opencard_olympic_run.js, tag=7.31-8.10 全民奥运 激情奔跑, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_opencard_olympic_run.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "50 0,6,10 * * *" script-path=jd_opencard_olympic_run.js,tag=7.31-8.10 全民奥运 激情奔跑
+cron "1 0,6,10 * * *" script-path=jd_opencard_olympic_run.js,tag=7.31-8.10 全民奥运 激情奔跑
 
 ===============Surge=================
-7.31-8.10 全民奥运 激情奔跑 = type=cron,cronexp="50 0,6,10 * * *",wake-system=1,timeout=3600,script-path=jd_opencard_olympic_run.js
+7.31-8.10 全民奥运 激情奔跑 = type=cron,cronexp="1 0,6,10 * * *",wake-system=1,timeout=3600,script-path=jd_opencard_olympic_run.js
 
 ============小火箭=========
-7.31-8.10 全民奥运 激情奔跑 = type=cron,script-path=jd_opencard_olympic_run.js, cronexpr="50 0,6,10 * * *", timeout=3600, enable=true
+7.31-8.10 全民奥运 激情奔跑 = type=cron,script-path=jd_opencard_olympic_run.js, cronexpr="1 0,6,10 * * *", timeout=3600, enable=true
 */
 const $ = new Env('7.31-8.10 全民奥运 激情奔跑');
-const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
+const jdCookieNode = $.isNode() ? require('./jdCookieOK.js') : '';
 let UA = require('./USER_AGENTS.js').USER_AGENT;
 const notify = $.isNode() ? require('./sendNotify') : '';
 //IOS等用户直接用NobyDa的jd cookie
@@ -87,9 +87,9 @@ message = ""
       // if (false) {
       if (!checkOpenCardData.allOpenCard) {
         for (let cardList1Element of checkOpenCardData.cardList1) {
-          $.log('入会: ' + cardList1Element.name)
-          await $.wait(1000)
-          await join(cardList1Element.value)
+          $.log('入会: ' + cardList1Element.name);
+          await $.wait(1000);
+          await join(cardList1Element.value);
         }
         for (let cardList1Element of checkOpenCardData.cardList2) {
           $.log('入会: ' + cardList1Element.name)
