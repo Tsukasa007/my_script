@@ -104,12 +104,21 @@ message = ""
       await followShop();
       await saveTask();
       await saveTask();
+      let count = 0
       while (checkOpenCardData.nowScore >= 50 && OLYMPIC_START_DRAW_FLAG) {
         $.log('nowScore: ' + checkOpenCardData.nowScore)
-        await $.wait(3000)
         await startDraw();
-        await $.wait(3000)
         checkOpenCardData = await checkOpenCard();
+        if (count >= 20) {
+          let wxCommonInfoTokenData = await getWxCommonInfoToken();
+          $.LZ_TOKEN_KEY = wxCommonInfoTokenData.LZ_TOKEN_KEY
+          $.LZ_TOKEN_VALUE = wxCommonInfoTokenData.LZ_TOKEN_VALUE
+          $.isvObfuscatorToken = await getIsvObfuscatorToken();
+          await $.wait(1000)
+          $.myPingData = await getMyPing()
+          count = 0
+        }
+        count++;
       }
       await getDrawRecordHasCoupon()
       await openCardStartDraw(1)
@@ -173,7 +182,8 @@ async function startDraw() {
         if (err) {
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
-          $.log('抽到了： ' + JSON.parse(data).data.name)
+          // $.log('抽到了： ' + JSON.parse(data).data.name)
+          $.log('抽到了： ' + data)
         }
       } catch (e) {
         await $.wait(5000)
@@ -417,15 +427,7 @@ function adLog() {
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           //  data = JSON.parse(data);
-          if ($.isNode())
-            for (let ck of resp['headers']['set-cookie']) {
-              cookie = `${cookie}; ${ck.split(";")[0]};`
-            }
-          else {
-            for (let ck of resp['headers']['Set-Cookie'].split(',')) {
-              cookie = `${cookie}; ${ck.split(";")[0]};`
-            }
-          }
+
         }
       } catch (e) {
         $.logErr(e, resp)
