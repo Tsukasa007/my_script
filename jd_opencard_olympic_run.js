@@ -72,11 +72,11 @@ message = ""
       $.LZ_TOKEN_KEY = wxCommonInfoTokenData.LZ_TOKEN_KEY
       $.LZ_TOKEN_VALUE = wxCommonInfoTokenData.LZ_TOKEN_VALUE
       $.isvObfuscatorToken = await getIsvObfuscatorToken();
-      await $.wait(1000)
+      await $.wait(500)
       $.myPingData = await getMyPing()
       if ($.myPingData ==="" || $.myPingData === '400001' || !$.myPingData || !$.myPingData.secretPin) {
         $.log("黑号!")
-        await $.wait(5000)
+        await $.wait(2000)
         continue
       }
       await getHtml();
@@ -88,12 +88,12 @@ message = ""
       if (!checkOpenCardData.allOpenCard) {
         for (let cardList1Element of checkOpenCardData.cardList1) {
           $.log('入会: ' + cardList1Element.name);
-          await $.wait(1000);
+          await $.wait(200);
           await join(cardList1Element.value);
         }
         for (let cardList1Element of checkOpenCardData.cardList2) {
           $.log('入会: ' + cardList1Element.name)
-          await $.wait(1000)
+          await $.wait(200)
           await join(cardList1Element.value)
         }
       }else{
@@ -384,7 +384,7 @@ function getHtml() {
   //await $.wait(20)
   return new Promise(resolve => {
     $.get({
-      url: `https://lzdz1-isv.isvjcloud.com/dingzhi/aoyun/moreshop/activity/6070986?activityId=dz210768869313&shareUuid=${$.shareUuid}&adsource=null&shareuserid4minipg=u/cWHIy7/x3Ij+HjfbnnePkaL5GGqMTUc8u/otw2E+a7Ak3lgFoFQlZmf45w8Jzw&shopid=1000001934&lng=114.062541&lat=29.541254&sid=4f8db9736ce13a1eb2564c91b22e3f9w&un_area=4_48201_54794_0 HTTP/1.1`,
+      url: `https://lzdz1-isv.isvjcloud.com/dingzhi/aoyun/moreshop/activity/6984232?activityId=dz210768869313&shareUuid=${$.shareUuid}&adsource=null&shareuserid4minipg=u/cWHIy7/x3Ij+HjfbnnePkaL5GGqMTUc8u/otw2E+a7Ak3lgFoFQlZmf45w8Jzw&shopid=1000001934&lng=114.062541&lat=29.541254&sid=4f8db9736ce13a1eb2564c91b22e3f9w&un_area=4_48201_54794_0 HTTP/1.1`,
       headers: {
         'User-Agent': UA,
         'Host':'lzdz1-isv.isvjcloud.com',
@@ -412,7 +412,7 @@ function adLog() {
   return new Promise(resolve => {
     $.post({
       url: `https://lzdz1-isv.isvjcloud.com/common/accessLogWithAD`,
-      body: `venderId=1000001934&code=99&pin=${encodeURIComponent($.myPingData.secretPin)}&activityId=dz210768869313&pageUrl=https://lzdz1-isv.isvjcloud.com/dingzhi/aoyun/moreshop/activity/6070986?activityId=dz210768869313&shareUuid=${$.shareUuid}&adsource=null&shareuserid4minipg=u/cWHIy7/x3Ij+HjfbnnePkaL5GGqMTUc8u/otw2E+a7Ak3lgFoFQlZmf45w8Jzw&shopid=1000001934&lng=114.062541&lat=29.541254&sid=4f8db9736ce13a1eb2564c91b22e3f9w&un_area=4_48201_54794_0&subType=APP&adSource=LH`,
+      body: `venderId=1000001934&code=99&pin=${encodeURIComponent($.myPingData.secretPin)}&activityId=dz210768869313&pageUrl=https://lzdz1-isv.isvjcloud.com/dingzhi/aoyun/moreshop/activity/6984232?activityId=dz210768869313&shareUuid=${$.shareUuid}&adsource=null&shareuserid4minipg=u/cWHIy7/x3Ij+HjfbnnePkaL5GGqMTUc8u/otw2E+a7Ak3lgFoFQlZmf45w8Jzw&shopid=1000001934&lng=114.062541&lat=29.541254&sid=4f8db9736ce13a1eb2564c91b22e3f9w&un_area=4_48201_54794_0&subType=APP&adSource=LH`,
       headers: {
         'User-Agent': `Mozilla/5.0 (Linux; U; Android 8.0.0; zh-cn; Mi Note 2 Build/OPR1.170623.032) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/61.0.3163.128 Mobile Safari/537.36 XiaoMi/MiuiBrowser/10.1.1`,
         'Host':'lzdz1-isv.isvjcloud.com',
