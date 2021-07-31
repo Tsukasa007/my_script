@@ -77,6 +77,7 @@ if (!process.env.JD_OPENCARE_CHAMPIONSHIP) {
       $.isLogin = true;
       $.nickName = '';
       console.log(`\n\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
+      let wxCommonInfoTokenDataTmp = await getWxCommonInfoToken();
       if (!$.isLogin) {
         $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, {
           "open-url": "https://bean.m.jd.com/bean/signIndex.action"
@@ -86,7 +87,7 @@ if (!process.env.JD_OPENCARE_CHAMPIONSHIP) {
         }
         continue
       }
-      let wxCommonInfoTokenData = await getWxCommonInfoToken();
+      let wxCommonInfoTokenData = wxCommonInfoTokenDataTmp.data;
       $.LZ_TOKEN_KEY = wxCommonInfoTokenData.LZ_TOKEN_KEY
       $.LZ_TOKEN_VALUE = wxCommonInfoTokenData.LZ_TOKEN_VALUE
       $.isvObfuscatorToken = await getIsvObfuscatorToken();
@@ -302,15 +303,17 @@ function getWxCommonInfoToken () {
     }, async (err, resp, data) => {
       try {
         if (err) {
+          $.isLogin = false
           console.log(`${JSON.stringify(err)}`)
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           data = JSON.parse(data);
         }
       } catch (e) {
+        $.isLogin = false
         $.logErr(e, resp)
       } finally {
-        resolve(data.data);
+        resolve(data);
       }
     })
   })
