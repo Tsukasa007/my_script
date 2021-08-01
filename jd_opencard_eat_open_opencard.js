@@ -33,7 +33,7 @@ cron "1 0,6,10 * * *" script-path=jd_opencard_eat_open_opencard.js,tag=7.24-8.15
 7.24-8.15 嗨皮一下 食力全开 = type=cron,script-path=jd_opencard_eat_open_opencard.js, cronexpr="1 0,6,10 * * *", timeout=3600, enable=true
 */
 const $ = new Env('7.24-8.15 嗨皮一下 食力全开');
-const jdCookieNode = $.isNode() ? require('./jdCookieOK.js') : '';
+const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let UA = require('./USER_AGENTS.js').USER_AGENT;
 const notify = $.isNode() ? require('./sendNotify') : '';
 //IOS等用户直接用NobyDa的jd cookie
