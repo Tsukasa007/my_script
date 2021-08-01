@@ -20,17 +20,17 @@
 ============Quantumultx===============
 [task_local]
 #7.24-8.15 嗨皮一下 食力全开
-1 0,6,10 * * * jd_opencard_championship.js, tag=7.24-8.15 嗨皮一下 食力全开, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_opencard_eat_open_opencard.png, enabled=true
+1 1,11 * * * jd_opencard_championship.js, tag=7.24-8.15 嗨皮一下 食力全开, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_opencard_eat_open_opencard.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "1 0,6,10 * * *" script-path=jd_opencard_eat_open_opencard.js,tag=7.24-8.15 嗨皮一下 食力全开
+cron "1 1,11 * * *" script-path=jd_opencard_eat_open_opencard.js,tag=7.24-8.15 嗨皮一下 食力全开
 
 ===============Surge=================
-7.24-8.15 嗨皮一下 食力全开 = type=cron,cronexp="1 0,6,10 * * *",wake-system=1,timeout=3600,script-path=jd_opencard_eat_open_opencard.js
+7.24-8.15 嗨皮一下 食力全开 = type=cron,cronexp="1 1,11 * * *",wake-system=1,timeout=3600,script-path=jd_opencard_eat_open_opencard.js
 
 ============小火箭=========
-7.24-8.15 嗨皮一下 食力全开 = type=cron,script-path=jd_opencard_eat_open_opencard.js, cronexpr="1 0,6,10 * * *", timeout=3600, enable=true
+7.24-8.15 嗨皮一下 食力全开 = type=cron,script-path=jd_opencard_eat_open_opencard.js, cronexpr="1 1,11 * * *", timeout=3600, enable=true
 */
 const $ = new Env('7.24-8.15 嗨皮一下 食力全开');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
