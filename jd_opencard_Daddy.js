@@ -4,6 +4,10 @@
 复制链接 到京东
 21.0复制整段话 http:/J1ApayERsNEA3p 奶爸盛典重磅福利！惊喜京豆立即领取，更多实物惊喜大奖#v8JE652j6a@扌丁kai鶁崠
 下拉到福利三，领取邀请5人奖励好像是100豆
+我不知道一天可以有多少个20豆自己测试吧 = =
+我不知道一天可以有多少个20豆自己测试吧 = =
+我不知道一天可以有多少个20豆自己测试吧 = =
+我不知道一天可以有多少个20豆自己测试吧 = =
 
 默认跑到ck6停，如果你还不可以领取 那就改变量
 
@@ -16,17 +20,17 @@
 ============Quantumultx===============
 [task_local]
 #8.2-8.12 奶爸盛典 爸气全开(跑完手动领取100豆)
-1 1,11 * * * jd_opencard_Daddy.js, tag=8.2-8.12 奶爸盛典 爸气全开(跑完手动领取100豆), img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_opencard_Daddy.png, enabled=true
+11 2,11 * * * jd_opencard_Daddy.js, tag=8.2-8.12 奶爸盛典 爸气全开(跑完手动领取100豆), img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_opencard_Daddy.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "1 1,11 * * *" script-path=jd_opencard_Daddy.js,tag=8.2-8.12 奶爸盛典 爸气全开(跑完手动领取100豆)
+cron "11 2,11 * * *" script-path=jd_opencard_Daddy.js,tag=8.2-8.12 奶爸盛典 爸气全开(跑完手动领取100豆)
 
 ===============Surge=================
-8.2-8.12 奶爸盛典 爸气全开(跑完手动领取100豆) = type=cron,cronexp="1 1,11 * * *",wake-system=1,timeout=3600,script-path=jd_opencard_Daddy.js
+8.2-8.12 奶爸盛典 爸气全开(跑完手动领取100豆) = type=cron,cronexp="11 2,11 * * *",wake-system=1,timeout=3600,script-path=jd_opencard_Daddy.js
 
 ============小火箭=========
-8.2-8.12 奶爸盛典 爸气全开(跑完手动领取100豆) = type=cron,script-path=jd_opencard_Daddy.js, cronexpr="1 1,11 * * *", timeout=3600, enable=true
+8.2-8.12 奶爸盛典 爸气全开(跑完手动领取100豆) = type=cron,script-path=jd_opencard_Daddy.js, cronexpr="11 2,11 * * *", timeout=3600, enable=true
 */
 const $ = new Env('8.2-8.12 奶爸盛典 爸气全开(跑完手动领取100豆)');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
