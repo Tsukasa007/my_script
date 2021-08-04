@@ -16,17 +16,17 @@
 ============Quantumultx===============
 [task_local]
 #8.4-8.12 大牌联合 冰爽一夏
-11 1,11 * * * jd_opencard_cool_summer.js, tag=8.4-8.12 大牌联合 冰爽一夏, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_opencard_cool_summer.png, enabled=true
+5 0,4 * * * jd_opencard_cool_summer.js, tag=8.4-8.12 大牌联合 冰爽一夏, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_opencard_cool_summer.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "11 1,11 * * *" script-path=jd_opencard_cool_summer.js,tag=8.4-8.12 大牌联合 冰爽一夏
+cron "5 0,4 * * *" script-path=jd_opencard_cool_summer.js,tag=8.4-8.12 大牌联合 冰爽一夏
 
 ===============Surge=================
-8.4-8.12 大牌联合 冰爽一夏 = type=cron,cronexp="11 1,11 * * *",wake-system=1,timeout=3600,script-path=jd_opencard_cool_summer.js
+8.4-8.12 大牌联合 冰爽一夏 = type=cron,cronexp="5 0,4 * * *",wake-system=1,timeout=3600,script-path=jd_opencard_cool_summer.js
 
 ============小火箭=========
-8.4-8.12 大牌联合 冰爽一夏 = type=cron,script-path=jd_opencard_cool_summer.js, cronexpr="11 1,11 * * *", timeout=3600, enable=true
+8.4-8.12 大牌联合 冰爽一夏 = type=cron,script-path=jd_opencard_cool_summer.js, cronexpr="5 0,4 * * *", timeout=3600, enable=true
 */
 const $ = new Env('8.4-8.12 大牌联合 冰爽一夏');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
