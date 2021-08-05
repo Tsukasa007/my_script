@@ -98,6 +98,9 @@ if (!$.isNode() || !process.env.JD_OPENCARD_COOL_SUMMER2) {
             }
             await getHtml();
             let simpleActInfoVoResp = await getSimpleActInfoVo();
+            if (simpleActInfoVoResp && simpleActInfoVoResp.data) {
+                $.venderId = simpleActInfoVoResp.data.venderId
+            }
             await adLog();
             // await shopInfo()
             $.actorUuidResp = await getActorUuid();
@@ -500,7 +503,7 @@ function adLog() {
     return new Promise(resolve => {
         $.post({
             url: `https://lzdz1-isv.isvjcloud.com/common/accessLogWithAD`,
-            body: `venderId=${$.venderId}&code=99&pin=${encodeURIComponent($.myPingData.secretPin)}&activityId=5a1b7bc1f22e4bc5b5686bb54749de2e&pageUrl=https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/5552921?activityId=5a1b7bc1f22e4bc5b5686bb54749de2e&shareUuid=8d525bc2bf0c477691c7430f769619d9&adsource=null&shareuserid4minipg=wtUcS9k2kekRmYYaphb32U7oeVP9kq2pYSH90mYt4m3fwcJlClpxrfmVYaGKuquQkdK3rLBQpEQH9V4tdrrh0w==&shopid=1000370909&lng=114.062590&lat=29.541489&sid=5fa6c7778669e4865e2e7e7ba5ea098w&un_area=4_48201_54794_0&subType=APP&adSource=null`,
+            body: `venderId=${$.venderId}&code=99&pin=${encodeURIComponent($.myPingData.secretPin)}&activityId=5a1b7bc1f22e4bc5b5686bb54749de2e&pageUrl=https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/8970248?activityId=5a1b7bc1f22e4bc5b5686bb54749de2e&lng=114.062541&lat=29.541254&sid=${$.shareUuid}&un_area=4_48201_54794_0`,
             headers: {
                 'User-Agent': `Mozilla/5.0 (Linux; U; Android 8.0.0; zh-cn; Mi Note 2 Build/OPR1.170623.032) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/61.0.3163.128 Mobile Safari/537.36 XiaoMi/MiuiBrowser/10.1.1`,
                 'Host': 'lzdz1-isv.isvjcloud.com',
