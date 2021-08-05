@@ -29,7 +29,7 @@ cron "22 0,4,20 * * *" script-path=jd_opencard_cool_summer2.js,tag=8.5-8.12 大�
 8.5-8.12 大牌联合 冰爽一夏 钜惠送好礼 = type=cron,script-path=jd_opencard_cool_summer2.js, cronexpr="22 0,4,20 * * *", timeout=3600, enable=true
 */
 const $ = new Env('8.5-8.12 大牌联合 冰爽一夏 钜惠送好礼');
-const jdCookieNode = $.isNode() ? require('./jdCookieOK.js') : '';
+const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let UA = require('./USER_AGENTS.js').USER_AGENT;
 const notify = $.isNode() ? require('./sendNotify') : '';
 //IOS等用户直接用NobyDa的jd cookie
