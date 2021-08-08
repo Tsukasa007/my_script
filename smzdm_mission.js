@@ -508,10 +508,11 @@ function WebGetCurrentInfo(smzdmCookie) {
           );
 
           //web签到
-          if (!beforeHasCheckin) {
-            content+="签到！"
-            await SignIn(smzdmCookie);
-          }
+          // if (!beforeHasCheckin) {
+          content+="签到！"
+          await SignIn(smzdmCookie);
+          await $.wait(5000)
+          // }
 
           // 每日抽奖
           let activeId = await GetLotteryActiveId(smzdmCookie);
