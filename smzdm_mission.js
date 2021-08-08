@@ -64,9 +64,10 @@ function SignIn (cookie) {
     magicJS.get(options, (err, resp, data) => {
       if (err) {
         magicJS.logWarning(`每日签到，请求异常：${err}`);
-        resolve("每日签到，请求异常");
+        resolve("");
       } else {
         magicJS.log(`每日签到成功`);
+        resolve("");
       }
     });
   });
@@ -508,10 +509,10 @@ function WebGetCurrentInfo(smzdmCookie) {
           );
 
           //web签到
-          // if (!beforeHasCheckin) {
-          content+="签到！"
-          await SignIn(smzdmCookie);
-          // }
+          if (!beforeHasCheckin) {
+            content+="签到！"
+            await SignIn(smzdmCookie);
+          }
 
           // 每日抽奖
           let activeId = await GetLotteryActiveId(smzdmCookie);
