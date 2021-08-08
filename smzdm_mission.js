@@ -511,7 +511,6 @@ function WebGetCurrentInfo(smzdmCookie) {
           // if (!beforeHasCheckin) {
           content+="签到！"
           await SignIn(smzdmCookie);
-          await $.wait(5000)
           // }
 
           // 每日抽奖
