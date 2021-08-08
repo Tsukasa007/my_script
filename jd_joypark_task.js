@@ -63,6 +63,8 @@ message = ""
         $.log(`${$.name} - ${$.UserName}  助力码: null`);
         $.invitePinTaskList.push('');
         $.isLogin = false
+        $.log("服务端异常，不知道为啥有时候这样，后面再观察一下，手动执行应该又没问题了")
+        continue
       }
 
       if (!$.isLogin) {
