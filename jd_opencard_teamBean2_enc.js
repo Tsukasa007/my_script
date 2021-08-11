@@ -9,17 +9,17 @@
 ============Quantumultx===============
 [task_local]
 #8.11 组队瓜分京豆
-44 0,10 * * * jd_opencard_cool_summer.js, tag=8.11 组队瓜分京豆, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_opencard_cool_summer.png, enabled=true
+44 0,10 * * * jd_opencard_teamBean2_enc.js, tag=8.11 组队瓜分京豆, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_opencard_teamBean2_enc.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "44 0,10 * * *" script-path=jd_opencard_cool_summer.js,tag=8.11 组队瓜分京豆
+cron "44 0,10 * * *" script-path=jd_opencard_teamBean2_enc.js,tag=8.11 组队瓜分京豆
 
 ===============Surge=================
-8.11 组队瓜分京豆 = type=cron,cronexp="44 0,10 * * *",wake-system=1,timeout=3600,script-path=jd_opencard_cool_summer.js
+8.11 组队瓜分京豆 = type=cron,cronexp="44 0,10 * * *",wake-system=1,timeout=3600,script-path=jd_opencard_teamBean2_enc.js
 
 ============小火箭=========
-8.11 组队瓜分京豆 = type=cron,script-path=jd_opencard_cool_summer.js, cronexpr="44 0,10 * * *", timeout=3600, enable=true
+8.11 组队瓜分京豆 = type=cron,script-path=jd_opencard_teamBean2_enc.js, cronexpr="44 0,10 * * *", timeout=3600, enable=true
 */
 const $ = new Env('8.11 组队瓜分京豆');
 const jdCookieNode = $.isNode() ? require('./jdCookieOK.js') : '';
