@@ -37,7 +37,7 @@ let cookieSMZDMs = []
 if (process.env.SMZDM_COOKIE) {
   if (process.env.SMZDM_COOKIE.indexOf('&') > -1) {
     cookieSMZDMs = process.env.SMZDM_COOKIE.split('&');
-  } else if (process.env.JD_COOKIE.indexOf('\n') > -1) {
+  } else if (process.env.SMZDM_COOKIE.indexOf('\n') > -1) {
     cookieSMZDMs = process.env.SMZDM_COOKIE.split('\n');
   } else {
     cookieSMZDMs = [process.env.SMZDM_COOKIE];
