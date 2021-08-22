@@ -1,4 +1,6 @@
 /*
+自己看活动链接
+https://lzdz-isv.isvjcloud.com/dingzhi/biouquan/activity/5771276?activityId=dz2009100009970144&shareUuid=ec142f1ba5f04fe9bd221b0450867ed9
 * 更新地址：https://github.com/Tsukasa007/my_script
 * */
 const $ = new Env('泉粉邀请卡');
@@ -79,7 +81,7 @@ $.max = false
         $.log(`ck1  异常！异常！异常！异常！异常！异常！异常！异常！异常！异常！异常！异常！`)
         break
       }
-      if ($.max) {
+      if ($.index===1 && $.max) {
         break
       }
     }
@@ -334,7 +336,7 @@ function getActorUuid() {
         } else {
           data = JSON.parse(data);
           $.log(`assistStatus = ${data.data.assistStatus}`)
-          if (data.data.shareNumber >= 15) {
+          if ($.index === 1 && data.data.shareNumber >= 15) {
             $.max = true
           }
           $.log(`你邀请了 ${data.data.shareNumber} 个人`)
