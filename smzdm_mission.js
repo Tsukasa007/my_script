@@ -1,6 +1,5 @@
 /*
 
-点草 科技玩家 ID = 体无完肤
 ENV
 SMZDM_COOKIE 什么值得买Cookie 多个 &区分
 
