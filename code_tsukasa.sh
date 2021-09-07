@@ -52,11 +52,10 @@ gen_pt_pin_array() {
 ## 导出互助码的通用程序，$1：去掉后缀的脚本名称，$2：config.sh中的后缀，$3：活动中文名称
 export_codes_sub() {
     local task_name=$1
-    local config_name=$2
+    local config_name=${$2%@*}
     local chinese_name=$3
     local config_name_my=My$config_name
     local config_name_for_other=ForOther$config_name
-    local config_name_for_other=${config_name_for_other%@*}
     local MaxCount=${config_name#*@}
     local i j k m n pt_pin_in_log code tmp_grep tmp_my_code tmp_for_other user_num random_num_list
     if cd $dir_log/$task_name &>/dev/null && [[ $(ls) ]]; then
