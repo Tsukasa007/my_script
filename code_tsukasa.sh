@@ -52,7 +52,8 @@ gen_pt_pin_array() {
 ## 导出互助码的通用程序，$1：去掉后缀的脚本名称，$2：config.sh中的后缀，$3：活动中文名称
 export_codes_sub() {
     local task_name=$1
-    local config_name=${$2%@*}
+    local config_name=$2
+    config_name=${config_name%@*}
     local chinese_name=$3
     local config_name_my=My$config_name
     local config_name_for_other=ForOther$config_name
