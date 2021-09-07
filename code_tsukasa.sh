@@ -95,7 +95,7 @@ export_codes_sub() {
             case $HelpType in
             0) ## 全部一致
                 tmp_for_other=""
-                for ((m = 0; m < ${#pt_pin[*]} && [m < $MaxCount]); m++)); do
+                for ((m = 0; m < ${#pt_pin[*]} && [m < $MaxCount]; m++)); do
                     j=$((m + 1))
                     tmp_for_other="$tmp_for_other@\${$config_name_my$j}"
                 done
