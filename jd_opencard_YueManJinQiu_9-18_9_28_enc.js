@@ -11,17 +11,17 @@ https://lzdz1-isv.isvjd.com/dingzhi/dz/openCard/activity/6531736?activityId=21h3
 ============Quantumultx===============
 [task_local]
 #9.18-9.28 月满金秋 佳节聚惠
-5 0,10,23 * * * jd_opencard_YueManJinQiu_9-18_9_28.js, tag=9.18-9.28 月满金秋 佳节聚惠, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_opencard_YueManJinQiu_9-18_9_28.png, enabled=true
+5 5 0,4 * * * jd_opencard_YueManJinQiu_9-18_9_28.js, tag=9.18-9.28 月满金秋 佳节聚惠, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_opencard_YueManJinQiu_9-18_9_28.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "5 0,10,23 * * *" script-path=jd_opencard_YueManJinQiu_9-18_9_28.js,tag=9.18-9.28 月满金秋 佳节聚惠
+cron "5 5 0,4 * * *" script-path=jd_opencard_YueManJinQiu_9-18_9_28.js,tag=9.18-9.28 月满金秋 佳节聚惠
 
 ===============Surge=================
-9.18-9.28 月满金秋 佳节聚惠 = type=cron,cronexp="5 0,10,23 * * *",wake-system=1,timeout=3600,script-path=jd_opencard_YueManJinQiu_9-18_9_28.js
+9.18-9.28 月满金秋 佳节聚惠 = type=cron,cronexp="5 5 0,4 * * *",wake-system=1,timeout=3600,script-path=jd_opencard_YueManJinQiu_9-18_9_28.js
 
 ============小火箭=========
-9.18-9.28 月满金秋 佳节聚惠 = type=cron,script-path=jd_opencard_YueManJinQiu_9-18_9_28.js, cronexpr="5 0,10,23 * * *", timeout=3600, enable=true
+9.18-9.28 月满金秋 佳节聚惠 = type=cron,script-path=jd_opencard_YueManJinQiu_9-18_9_28.js, cronexpr="5 5 0,4 * * *", timeout=3600, enable=true
 */
 let wait = 52000
 const $ = new Env('9.18-9.28 月满金秋 佳节聚惠');
