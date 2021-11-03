@@ -3,10 +3,9 @@
 Tsukasa007
 Tsukasa
 
-============Quantumultx===============
-[task_local]
-#逛好物 赚京豆
-30 3 * * * https://raw.githubusercontent.com/x/scripts/x/jd/x.js, tag=东东乐园, img-url=, enabled=true
+================Loon==============
+[Script]
+cron "30 7 * * *" script-path=https://raw.githubusercontent.com/x/scripts/x/jd/x.js tag=逛好物 赚京豆
 */
 const $ = new Env('逛好物 赚京豆');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
