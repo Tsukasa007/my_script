@@ -5,7 +5,7 @@ Tsukasa
 
 ================Loon==============
 [Script]
-cron "30 7 * * *" script-path=https://raw.githubusercontent.com/x/scripts/x/jd/x.js tag=逛好物 赚京豆
+cron "30 2 * * *" script-path=https://raw.githubusercontent.com/x/scripts/x/jd/x.js tag=逛好物 赚京豆
 */
 const $ = new Env('逛好物 赚京豆');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
