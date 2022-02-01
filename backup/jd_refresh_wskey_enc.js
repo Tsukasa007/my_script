@@ -1,6 +1,6 @@
 /*
 更新地址：https://github.com/Tsukasa007/my_script
-更新日期：2022-1-25 22:11
+更新日期：2022-2-01 18:26
 ============Quantumultx===============
 [task_local]
 18 0-23/6 * * * jd_refresh_wskey_enc.js, tag=wskey刷新CK, img-url=https://raw.githubusercontent.com/tsukasa007/icon/master/jd_refresh_wskey_enc.png, enabled=true
