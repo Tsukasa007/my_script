@@ -12,7 +12,7 @@ hostname = api.m.jd.com
 # wskey
 
 # 京东
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=getIosDegrade url script-request-header https://raw.githubusercontent.com/LJMX996/jd/aaron/utils/wskey.js
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=queryTemplates url script-request-header https://ghproxy.com/https://raw.githubusercontent.com/Tsukasa007/my_script/master/backup/wskey.js
 
 
 */
