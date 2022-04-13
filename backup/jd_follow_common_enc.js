@@ -1,6 +1,6 @@
 /*
 通用关注有礼，请先群里设置配置
-更新时间：2022-02-21 17:02
+更新时间：2022-04-13 09:02
 */
 const $ = new Env('通用关注有礼');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
