@@ -42,7 +42,7 @@ const $ = new Env("wskey")
 
     console.log("wskey获取中！")
 
-    $notify("点击复制wskey", "",`${wskey};`);
+    $notify("点击复制wskey", "",`pt_pin=${pin};${wskey};`);
 })()
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
