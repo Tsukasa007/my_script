@@ -21,9 +21,9 @@ const $ = new Env("wskey")
     let cookie = $request.headers.Cookie
     let wskey = cookie.match(/(wskey=[^;]*)/)[1]
     console.log('================')
-    console.log(`wskey=${wskey}`)
+    console.log(`${wskey}`)
 
-    let jec = $request.headers['J-E-C']
+    let jec = decodeURIComponent($request.headers['J-E-C'])
     console.log('================')
     console.log(`jec=${jec}`)
 
