@@ -1,6 +1,6 @@
 /*
 通用转盘抽奖，请先群里设置配置
-更新时间：2022-06-30 23:07
+更新时间：2022-07-01 16:44
 */
 const $ = new Env('通用转盘抽奖');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
