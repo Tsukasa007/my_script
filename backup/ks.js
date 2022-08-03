@@ -6,7 +6,7 @@
 
 const $ = new Env("ks")
 !(async () => {
-    let responseBody = $response.body
+    let responseBody = $response
     console.log(responseBody)
     console.log(JSON.stringify(responseBody))
 
