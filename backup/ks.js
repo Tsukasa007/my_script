@@ -4,12 +4,12 @@
 
 */
 
-const $ = new Env("wskey")
+const $ = new Env("ks")
 !(async () => {
-    let body = $request.body
-    console.log(body)
+    let request = $request
+    console.log("ks")
+    console.log(JSON.stringify(request))
 
-    $notify("点击复制body", "",`${body}`);
 })()
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
