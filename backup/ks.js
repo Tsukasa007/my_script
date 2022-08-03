@@ -6,9 +6,9 @@
 
 const $ = new Env("ks")
 !(async () => {
-    let request = $request
-    console.log("ks")
-    console.log(JSON.stringify(request))
+    let responseBody = $response.body
+    console.log(responseBody)
+    console.log(JSON.stringify(responseBody))
 
 })()
     .catch((e) => $.logErr(e))
