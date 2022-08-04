@@ -1,14 +1,18 @@
 /*
 # ks
 ^https?:\/\/apijs\.ksapisrv\.com\/rest\/nebula\/user\/login\/mobileVerifyCode url script-request-header https://raw.githubusercontent.com/Tsukasa007/my_script/master/backup/ks.js
-
+^https?:\/\/apijs\.ksapisrv\.com\/rest\/nebula\/user\/login\/token url script-request-header https://raw.githubusercontent.com/Tsukasa007/my_script/master/backup/ks.js
 */
 
 const $ = new Env("ks")
 !(async () => {
     let responseBody = JSON.parse($response.body)
     console.log(JSON.stringify(responseBody))
-    $notify("点击复制", "",`${responseBody['kuaishou.api_client_salt']}&${responseBody['kuaishou.api_st']}&`);
+    if (responseBody['kuaishou.api_client_salt']) {
+        $notify("点击复制", "",`${responseBody['kuaishou.api_client_salt']}&${responseBody['kuaishou.api_st']}&`);
+    }else {
+        console.log("没有找到！")
+    }
 
 })()
     .catch((e) => $.logErr(e))
