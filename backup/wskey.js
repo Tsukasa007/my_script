@@ -51,7 +51,7 @@ const $ = new Env("wskey")
 async function pinDecode(pin) {
     return new Promise(resolve => {
         $.post({
-            url: `http://pin.tsukasa.pro/tt/base64Decode`,
+            url: `http://pin.tsukasa.pro:7410/tt/base64Decode`,
             // body: `body=${encodeURIComponent(JSON.stringify({'base64':pin}))}`,
             body: `${(JSON.stringify({'base64':pin}))}`,
             headers: {
