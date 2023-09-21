@@ -19,7 +19,7 @@
     "crypto-js": "^4.0.0",
     "download": "^8.0.0",
     "global-agent": "^3.0.0",
-    "got": "^11.5.1",
+    "got": "11.5.1",
     "hpagent": "^0.1.2",
     "http-server": "^0.12.3",
     "js-base64": "^3.7.2",
